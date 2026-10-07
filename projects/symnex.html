@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="generator" content="archify 3.0.1">
   <meta name="archify-reader-contract" content="declared-wide-v1">
-  <title>SymNex · AI 原生个人数据管理 Android 应用</title>
+  <title>SymNex 灵襄 · AI 原生个人数据中枢</title>
   <script>
     // Resolve the theme before first paint so light-preference users don't
     // see a dark flash. The toolbar script below re-applies with UI state.
@@ -26,7 +26,7 @@
           try { theme = localStorage.getItem('archify-theme'); } catch (_) {}
         }
         if (theme !== 'light' && theme !== 'dark') {
-          theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+          theme = 'dark';
         }
         document.documentElement.setAttribute('data-theme', theme);
       } catch (_) {}
@@ -4978,7 +4978,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
            data-preset-badge-blueprint="蓝图 / 修订 01"
            data-preset-badge-editorial="编辑风格 / 现场笔记">
         <div class="pulse-dot"></div>
-        <h1>SymNex · AI 原生个人数据管理 Android 应用</h1>
+        <h1>SymNex 灵襄 · AI 原生个人数据中枢</h1>
       </div>
     </div>
 
@@ -4987,8 +4987,8 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     <!-- Main Diagram -->
     <div class="diagram-container" data-detail-level="read"
          data-preset-badge-editorial-plate="ARCHIFY / 图版 04">
-      <svg viewBox="0 0 1170 840" role="img" lang="zh-CN" aria-labelledby="archify-diagram-title archify-diagram-description" data-preset="signal-flow" data-quality-profile="showcase" data-reader-fit="intrinsic-height" data-reader-min-text="7.5" data-reader-primary-text="14">
-        <title id="archify-diagram-title">SymNex · AI 原生个人数据管理 Android 应用</title>
+      <svg viewBox="0 0 1180 868" role="img" lang="zh-CN" aria-labelledby="archify-diagram-title archify-diagram-description" data-animation="trace" data-preset="signal-flow" data-quality-profile="showcase" data-reader-fit="intrinsic-height" data-reader-min-text="7.5" data-reader-primary-text="14">
+        <title id="archify-diagram-title">SymNex 灵襄 · AI 原生个人数据中枢</title>
         <desc id="archify-diagram-description">由 Archify 生成的架构图。</desc>
         <!-- Definitions -->
         <defs>
@@ -5013,272 +5013,298 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <rect width="100%" height="100%" fill="url(#grid)" />
 
         <!-- Boundaries (behind everything) -->
-
+        <rect data-graph-role="structural-frame" data-composition-frame-kind="region" data-composition-frame-id="0" data-composition-frame-label="Flutter 应用 · Android" x="200" y="30" width="910" height="674" rx="12" class="c-region" stroke-width="1"/>
 
         <!-- Connection paths (before components for correct z-order) -->
         <g data-graph-role="automatic-crossover" style="--step:0">
-          <path data-graph-role="automatic-crossover-underlay" d="M 160 330 L 205 330" fill="none" stroke="var(--mask)" stroke-width="5.8" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="user" data-edge-to="smart_input" data-edge-label="一句话" data-edge-key="0" data-composition-points="160,330;205,330" data-composition-crossover="halo" data-composition-independent="true" d="M 160 330 L 205 330" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 160 330 L 230 330" fill="none" stroke="var(--mask)" stroke-width="5.8" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="user" data-edge-to="smart_input" data-edge-label="一句话" data-edge-key="0" data-edge-id="u-si" data-composition-points="160,330;230,330" data-composition-crossover="halo" data-composition-independent="true" d="M 160 330 L 230 330" class="a-emphasis" data-animate="edge" style="--step:0" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
         </g>
-        <g data-graph-role="automatic-crossover" style="--step:1">
-          <path data-graph-role="automatic-crossover-underlay" d="M 340 338 L 385 338" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="smart_input" data-edge-to="ai_pipeline" data-edge-label="自然语言" data-edge-key="1" data-composition-points="340,338;385,338" data-composition-crossover="halo" data-composition-independent="true" d="M 340 338 L 385 338" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-        </g>
-        <g data-graph-role="automatic-crossover" style="--step:2">
-          <path data-graph-role="automatic-crossover-underlay" d="M 520 331 L 565 331" fill="none" stroke="var(--mask)" stroke-width="5.8" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="ai_pipeline" data-edge-to="channel_router" data-edge-label="三段流式" data-edge-key="2" data-composition-points="520,331;565,331" data-composition-crossover="halo" data-composition-independent="true" d="M 520 331 L 565 331" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        </g>
-        <g data-graph-role="automatic-crossover" style="--step:3">
-          <path data-graph-role="automatic-crossover-underlay" d="M 710 317 L 742 317 Q 750 317 750 309 L 750 209 Q 750 201 758 201 L 790 201" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="channel_router" data-edge-to="llm_openai" data-edge-label="SSE" data-edge-key="3" data-composition-points="710,317;750,317;750,201;790,201" data-composition-crossover="halo" data-composition-independent="true" d="M 710 317 L 742 317 Q 750 317 750 309 L 750 209 Q 750 201 758 201 L 790 201" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-        </g>
+        <path data-edge-from="user" data-edge-to="importer" data-edge-label="导入账单" data-edge-key="1" data-edge-id="u-imp" data-composition-points="95,300;95,202;230,202" d="M 95 300 L 95 210 Q 95 202 103 202 L 230 202" class="a-default" data-animate="edge" style="--step:1" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="user" data-edge-to="moli" data-edge-label="自然语言提问" data-edge-key="2" data-edge-id="u-moli" data-composition-points="95,360;95,510;230,510" d="M 95 360 L 95 502 Q 95 510 103 510 L 230 510" class="a-default" data-animate="edge" style="--step:2" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="importer" data-edge-to="pipeline" data-edge-label="进管线抽取" data-edge-key="3" data-edge-id="imp-pipe" data-composition-points="325,234;325,267;530,267;530,300" d="M 325 234 L 325 259 Q 325 267 333 267 L 522 267 Q 530 267 530 275 L 530 300" class="a-default" data-animate="edge" style="--step:3" stroke-width="1.5" marker-end="url(#arrowhead)"/>
         <g data-graph-role="automatic-crossover" style="--step:4">
-          <path data-graph-role="automatic-crossover-underlay" d="M 710 345 L 742 345 Q 750 345 750 353 L 750 453 Q 750 461 758 461 L 790 461" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="channel_router" data-edge-to="llm_anthropic" data-edge-label="SSE" data-edge-key="4" data-composition-points="710,345;750,345;750,461;790,461" data-composition-crossover="halo" data-composition-independent="true" d="M 710 345 L 742 345 Q 750 345 750 353 L 750 453 Q 750 461 758 461 L 790 461" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 380 330 L 440 330" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="smart_input" data-edge-to="pipeline" data-edge-label="提交" data-edge-key="4" data-edge-id="si-pipe" data-composition-points="380,330;440,330" data-composition-crossover="halo" data-composition-independent="true" d="M 380 330 L 440 330" class="a-default" data-animate="edge" style="--step:4" stroke-width="1.5" marker-end="url(#arrowhead)"/>
         </g>
         <g data-graph-role="automatic-crossover" style="--step:5">
-          <path data-graph-role="automatic-crossover-underlay" d="M 710 331 L 990 331" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="channel_router" data-edge-to="validator" data-edge-label="结构化响应" data-edge-key="5" data-composition-points="710,331;990,331" data-composition-crossover="halo" data-composition-independent="true" d="M 710 331 L 990 331" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 530 300 L 530 120" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="pipeline" data-edge-to="prompts" data-edge-label="提示词 + 契约" data-edge-key="5" data-edge-id="pipe-prompts" data-composition-points="530,300;530,120" data-composition-crossover="halo" data-composition-independent="true" d="M 530 300 L 530 120" class="a-default" data-animate="edge" style="--step:5" stroke-width="1.5" marker-end="url(#arrowhead)"/>
         </g>
         <g data-graph-role="automatic-crossover" style="--step:6">
-          <path data-graph-role="automatic-crossover-underlay" d="M 1060 360 L 1060 528 Q 1060 536 1052 536 L 870.5 536 Q 862.5 536 862.5 544 L 862.5 560" fill="none" stroke="var(--mask)" stroke-width="5.8" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="validator" data-edge-to="record_saver" data-edge-label="契约通过" data-edge-key="6" data-composition-points="1060,360;1060,536;862.5,536;862.5,560" data-composition-crossover="halo" data-composition-independent="true" d="M 1060 360 L 1060 528 Q 1060 536 1052 536 L 870.5 536 Q 862.5 536 862.5 544 L 862.5 560" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 620 332 L 700 332" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="pipeline" data-edge-to="channel" data-edge-label="fast/main" data-edge-key="6" data-edge-id="pipe-chan" data-composition-points="620,332;700,332" data-composition-crossover="halo" data-composition-independent="true" d="M 620 332 L 700 332" class="a-default" data-animate="edge" style="--step:6" stroke-width="1.5" marker-end="url(#arrowhead)"/>
         </g>
-        <g data-graph-role="automatic-crossover" style="--step:7">
-          <path data-graph-role="automatic-crossover-underlay" d="M 790 583 L 625 583" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="record_saver" data-edge-to="drift_db" data-edge-label="事务写入" data-edge-key="7" data-composition-points="790,583;625,583" data-composition-crossover="halo" data-composition-independent="true" d="M 790 583 L 625 583" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-        </g>
-        <g data-graph-role="automatic-crossover" style="--step:8">
-          <path data-graph-role="automatic-crossover-underlay" d="M 790 597 L 657 597 Q 649 597 649 605 L 649 725 Q 649 733 641 733 L 625 733" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="record_saver" data-edge-to="assoc_index" data-edge-label="实体注册" data-edge-key="8" data-composition-points="790,597;649,597;649,733;625,733" data-composition-crossover="halo" data-composition-independent="true" d="M 790 597 L 657 597 Q 649 597 649 605 L 649 725 Q 649 733 641 733 L 625 733" class="a-dashed" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
-        </g>
-        <g data-graph-role="automatic-crossover" style="--step:9">
-          <path data-graph-role="automatic-crossover-underlay" d="M 790 747 L 625 747" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="moli_agent" data-edge-to="assoc_index" data-edge-label="关联查询" data-edge-key="9" data-composition-points="790,747;625,747" data-composition-crossover="halo" data-composition-independent="true" d="M 790 747 L 625 747" class="a-dashed" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
-        </g>
-        <g data-graph-role="automatic-crossover" style="--step:10">
-          <path data-graph-role="automatic-crossover-underlay" d="M 355 161 L 444.5 161 Q 452.5 161 452.5 169 L 452.5 300" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="bill_import" data-edge-to="ai_pipeline" data-edge-label="账单批量" data-edge-key="10" data-composition-points="355,161;452.5,161;452.5,300" data-composition-crossover="halo" data-composition-independent="true" d="M 355 161 L 444.5 161 Q 452.5 161 452.5 169 L 452.5 300" class="a-dashed" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
-        </g>
+        <path data-edge-from="channel" data-edge-to="llm" data-edge-label="SSE 调用" data-edge-key="7" data-edge-id="chan-llm" data-composition-points="775,300;775,92;880,92;880,92" d="M 775 300 L 775 100 Q 775 92 783 92 L 880 92 L 880 92" class="a-default" data-animate="edge" style="--step:7" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="channel" data-edge-to="core_db" data-edge-label="供应商 / 模型池" data-edge-key="8" data-edge-id="chan-core" data-composition-points="850,330;866,330;866,252;980,252;980,230" d="M 850 330 L 858 330 Q 866 330 866 322 L 866 260 Q 866 252 874 252 L 972 252 Q 980 252 980 244 L 980 230" class="a-default" data-animate="edge" style="--step:8" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="pipeline" data-edge-to="data_db" data-edge-label="确认后落库 · 7 表" data-edge-key="9" data-edge-id="pipe-db" data-composition-points="530,364;530,422;980,422;980,364" d="M 530 364 L 530 414 Q 530 422 538 422 L 972 422 Q 980 422 980 414 L 980 364" class="a-emphasis" data-animate="edge" style="--step:9" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        <path data-edge-from="data_db" data-edge-to="fts" data-edge-label="bigram 同步" data-edge-key="10" data-edge-id="db-fts" data-composition-points="880,332;855,332;855,410;735,410;735,440" d="M 880 332 L 863 332 Q 855 332 855 340 L 855 402 Q 855 410 847 410 L 743 410 Q 735 410 735 418 L 735 440" class="a-dashed" data-animate="edge" style="--step:10" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
+        <path data-edge-from="moli" data-edge-to="agent" data-edge-label="对话" data-edge-key="11" data-edge-id="moli-agent" data-composition-points="380,510;410,510;410,652;440,652" d="M 380 510 L 402 510 Q 410 510 410 518 L 410 644 Q 410 652 418 652 L 440 652" class="a-default" data-animate="edge" style="--step:11" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="agent" data-edge-to="fts" data-edge-label="query · MATCH 检索" data-edge-key="12" data-edge-id="agent-fts" data-composition-points="530,684;530,710;735,710;735,500" d="M 530 684 L 530 702 Q 530 710 538 710 L 727 710 Q 735 710 735 702 L 735 500" class="a-default" data-animate="edge" style="--step:12" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="agent" data-edge-to="llm" data-edge-label="SSE 流式对话" data-edge-key="13" data-edge-id="agent-llm" data-composition-points="620,652;660,652;660,730;1140,730;1140,92;1080,92" d="M 620 652 L 652 652 Q 660 652 660 660 L 660 722 Q 660 730 668 730 L 1132 730 Q 1140 730 1140 722 L 1140 100 Q 1140 92 1132 92 L 1080 92" class="a-default" data-animate="edge" style="--step:12" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="platform" data-edge-to="features" data-edge-label="闹钟 / 洞察调度" data-edge-key="14" data-edge-id="platform-feat" data-composition-points="120,740;120,650;230,650" d="M 120 740 L 120 658 Q 120 650 128 650 L 230 650" class="a-default" data-animate="edge" style="--step:12" stroke-width="1.5" marker-end="url(#arrowhead)"/>
 
         <!-- Components -->
-        <g id="node-user" data-node-id="user" data-node-label="用户" tabindex="0" role="button" aria-label="聚焦用户，一句话录入, 架构组件" aria-pressed="false" data-node-kind="external" data-node-sublabel="一句话录入" data-node-context="架构组件">
-          <title>用户 · 一句话录入 · 架构组件</title>
-          <rect x="40" y="300" width="120" height="60" rx="6" class="c-mask"/>
-          <rect x="40" y="300" width="120" height="60" rx="6" class="c-external" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(46 306) scale(0.6875)">
+        <g id="node-prompts" data-node-id="prompts" data-node-label="提示词注册表" tabindex="0" role="button" aria-label="聚焦提示词注册表，40 YAML · 哈希契约链, Flutter 应用 · Android" aria-pressed="false" data-node-kind="backend" data-node-sublabel="40 YAML · 哈希契约链" data-node-context="Flutter 应用 · Android">
+          <title>提示词注册表 · 40 YAML · 哈希契约链 · Flutter 应用 · Android</title>
+          <rect x="445" y="60" width="170" height="60" rx="6" class="c-mask"/>
+          <rect x="445" y="60" width="170" height="60" rx="6" class="c-backend" data-animate="node" style="--step:6" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(451 66) scale(0.6875)">
+            <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="530" y="88" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">提示词注册表</text>
+        <text data-detail="context" x="530" y="104" class="t-muted" font-size="9" text-anchor="middle">40 YAML · 哈希契约链</text>
+        </g>
+
+        <g id="node-llm" data-node-id="llm" data-node-label="LLM 上游" tabindex="0" role="button" aria-label="聚焦LLM 上游，DeepSeek / MiniMax · Anthropic 兼容, 架构组件" aria-pressed="false" data-node-kind="cloud" data-node-sublabel="DeepSeek / MiniMax · Anthropic 兼容" data-node-tag="SSE 流式" data-node-context="架构组件">
+          <title>LLM 上游 · DeepSeek / MiniMax · Anthropic 兼容 · 架构组件 · SSE 流式</title>
+          <rect x="880" y="60" width="200" height="64" rx="6" class="c-mask"/>
+          <rect x="880" y="60" width="200" height="64" rx="6" class="c-cloud" data-animate="node" style="--step:8" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="cloud" class="semantic-sigil s-cloud" transform="translate(886 66) scale(0.6875)">
+            <path d="M4.3 12.5h7.3a2.4 2.4 0 0 0 .2-4.8 4 4 0 0 0-7.5-1.3A3.1 3.1 0 0 0 4.3 12.5Z"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="980" y="90" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">LLM 上游</text>
+        <text data-detail="context" x="980" y="106" class="t-muted" font-size="9" text-anchor="middle">DeepSeek / MiniMax · Anthropic 兼容</text>
+        <text data-detail="fine" x="980" y="116" class="t-cloud" font-size="7" text-anchor="middle">SSE 流式</text>
+        </g>
+
+        <g id="node-importer" data-node-id="importer" data-node-label="账单导入 + 三级去重" tabindex="0" role="button" aria-label="聚焦账单导入 + 三级去重，5 格式 · 指纹 + 并查集 · AI 只判不择优, Flutter 应用 · Android" aria-pressed="false" data-node-kind="backend" data-node-sublabel="5 格式 · 指纹 + 并查集 · AI 只判不择优" data-node-context="Flutter 应用 · Android">
+          <title>账单导入 + 三级去重 · 5 格式 · 指纹 + 并查集 · AI 只判不择优 · Flutter 应用 · Android</title>
+          <rect x="230" y="170" width="190" height="64" rx="6" class="c-mask"/>
+          <rect x="230" y="170" width="190" height="64" rx="6" class="c-backend" data-animate="node" style="--step:2" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(236 176) scale(0.6875)">
+            <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="325" y="200" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">账单导入 + 三级去重</text>
+        <text data-detail="context" x="325" y="216" class="t-muted" font-size="7.9" text-anchor="middle">5 格式 · 指纹 + 并查集 · AI 只判不择优</text>
+        </g>
+
+        <g id="node-core_db" data-node-id="core_db" data-node-label="Core 配置库" tabindex="0" role="button" aria-label="聚焦Core 配置库，Drift · 8 表 · 供应商 / 模型池, Flutter 应用 · Android" aria-pressed="false" data-node-kind="database" data-node-sublabel="Drift · 8 表 · 供应商 / 模型池" data-node-context="Flutter 应用 · Android">
+          <title>Core 配置库 · Drift · 8 表 · 供应商 / 模型池 · Flutter 应用 · Android</title>
+          <rect x="880" y="170" width="200" height="60" rx="6" class="c-mask"/>
+          <rect x="880" y="170" width="200" height="60" rx="6" class="c-database" data-animate="node" style="--step:9" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="database" class="semantic-sigil s-database" transform="translate(886 176) scale(0.6875)">
+            <ellipse cx="8" cy="4" rx="5" ry="2"/>
+            <path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="980" y="198" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Core 配置库</text>
+        <text data-detail="context" x="980" y="214" class="t-muted" font-size="9" text-anchor="middle">Drift · 8 表 · 供应商 / 模型池</text>
+        </g>
+
+        <g id="node-user" data-node-id="user" data-node-label="用户" tabindex="0" role="button" aria-label="聚焦用户，一句话 · 对话查询, 架构组件" aria-pressed="false" data-node-kind="external" data-node-sublabel="一句话 · 对话查询" data-node-context="架构组件">
+          <title>用户 · 一句话 · 对话查询 · 架构组件</title>
+          <rect x="30" y="300" width="130" height="60" rx="6" class="c-mask"/>
+          <rect x="30" y="300" width="130" height="60" rx="6" class="c-external" data-animate="node" style="--step:0" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(36 306) scale(0.6875)">
             <rect x="2.5" y="5" width="8.5" height="8" rx="1.5"/>
             <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="100" y="328" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">用户</text>
-        <text data-detail="context" x="100" y="344" class="t-muted" font-size="9" text-anchor="middle">一句话录入</text>
+          <text data-node-label="" data-detail-anchor="" x="95" y="328" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">用户</text>
+        <text data-detail="context" x="95" y="344" class="t-muted" font-size="9" text-anchor="middle">一句话 · 对话查询</text>
         </g>
 
-        <g id="node-bill_import" data-node-id="bill_import" data-node-label="账单导入" tabindex="0" role="button" aria-label="聚焦账单导入，5 格式 3 银行策略, 架构组件" aria-pressed="false" data-node-kind="frontend" data-node-sublabel="5 格式 3 银行策略" data-node-context="架构组件">
-          <title>账单导入 · 5 格式 3 银行策略 · 架构组件</title>
-          <rect x="205" y="130" width="150" height="62" rx="6" class="c-mask"/>
-          <rect x="205" y="130" width="150" height="62" rx="6" class="c-frontend" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="frontend" class="semantic-sigil s-frontend" transform="translate(211 136) scale(0.6875)">
+        <g id="node-smart_input" data-node-id="smart_input" data-node-label="智能录入" tabindex="0" role="button" aria-label="聚焦智能录入，全局 FAB, Flutter 应用 · Android" aria-pressed="false" data-node-kind="frontend" data-node-sublabel="全局 FAB" data-node-context="Flutter 应用 · Android">
+          <title>智能录入 · 全局 FAB · Flutter 应用 · Android</title>
+          <rect x="230" y="300" width="150" height="60" rx="6" class="c-mask"/>
+          <rect x="230" y="300" width="150" height="60" rx="6" class="c-frontend" data-animate="node" style="--step:1" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="frontend" class="semantic-sigil s-frontend" transform="translate(236 306) scale(0.6875)">
             <rect x="2" y="3" width="12" height="10" rx="2"/>
             <path d="M2 6.5h12"/>
             <circle cx="4.1" cy="4.8" r=".7" class="sigil-fill"/>
             <circle cx="6.3" cy="4.8" r=".7" class="sigil-fill"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="280" y="159" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">账单导入</text>
-        <text data-detail="context" x="280" y="175" class="t-muted" font-size="9" text-anchor="middle">5 格式 3 银行策略</text>
+          <text data-node-label="" data-detail-anchor="" x="305" y="328" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">智能录入</text>
+        <text data-detail="context" x="305" y="344" class="t-muted" font-size="9" text-anchor="middle">全局 FAB</text>
         </g>
 
-        <g id="node-smart_input" data-node-id="smart_input" data-node-label="SmartInputPage" tabindex="0" role="button" aria-label="聚焦SmartInputPage，全局唯一 FAB, 架构组件" aria-pressed="false" data-node-kind="frontend" data-node-sublabel="全局唯一 FAB" data-node-context="架构组件">
-          <title>SmartInputPage · 全局唯一 FAB · 架构组件</title>
-          <rect x="205" y="300" width="135" height="60" rx="6" class="c-mask"/>
-          <rect x="205" y="300" width="135" height="60" rx="6" class="c-frontend" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="frontend" class="semantic-sigil s-frontend" transform="translate(211 306) scale(0.6875)">
+        <g id="node-pipeline" data-node-id="pipeline" data-node-label="AI 三段管线" tabindex="0" role="button" aria-label="聚焦AI 三段管线，分类 → 优化 → 抽取, Flutter 应用 · Android" aria-pressed="false" data-node-kind="backend" data-node-sublabel="分类 → 优化 → 抽取" data-node-tag="60s watchdog" data-node-context="Flutter 应用 · Android">
+          <title>AI 三段管线 · 分类 → 优化 → 抽取 · Flutter 应用 · Android · 60s watchdog</title>
+          <rect x="440" y="300" width="180" height="64" rx="6" class="c-mask"/>
+          <rect x="440" y="300" width="180" height="64" rx="6" class="c-backend" data-animate="node" style="--step:4" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(446 306) scale(0.6875)">
+            <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="530" y="330" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">AI 三段管线</text>
+        <text data-detail="context" x="530" y="346" class="t-muted" font-size="9" text-anchor="middle">分类 → 优化 → 抽取</text>
+        <text data-detail="fine" x="530" y="356" class="t-backend" font-size="7" text-anchor="middle">60s watchdog</text>
+        </g>
+
+        <g id="node-channel" data-node-id="channel" data-node-label="通道路由" tabindex="0" role="button" aria-label="聚焦通道路由，main / fast / vision, Flutter 应用 · Android" aria-pressed="false" data-node-kind="backend" data-node-sublabel="main / fast / vision" data-node-context="Flutter 应用 · Android">
+          <title>通道路由 · main / fast / vision · Flutter 应用 · Android</title>
+          <rect x="700" y="300" width="150" height="60" rx="6" class="c-mask"/>
+          <rect x="700" y="300" width="150" height="60" rx="6" class="c-backend" data-animate="node" style="--step:7" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(706 306) scale(0.6875)">
+            <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="775" y="328" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">通道路由</text>
+        <text data-detail="context" x="775" y="344" class="t-muted" font-size="9" text-anchor="middle">main / fast / vision</text>
+        </g>
+
+        <g id="node-data_db" data-node-id="data_db" data-node-label="Data 业务库" tabindex="0" role="button" aria-label="聚焦Data 业务库，Drift · 41 表 · schema v52, Flutter 应用 · Android" aria-pressed="false" data-node-kind="database" data-node-sublabel="Drift · 41 表 · schema v52" data-node-context="Flutter 应用 · Android">
+          <title>Data 业务库 · Drift · 41 表 · schema v52 · Flutter 应用 · Android</title>
+          <rect x="880" y="300" width="200" height="64" rx="6" class="c-mask"/>
+          <rect x="880" y="300" width="200" height="64" rx="6" class="c-database" data-animate="node" style="--step:10" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="database" class="semantic-sigil s-database" transform="translate(886 306) scale(0.6875)">
+            <ellipse cx="8" cy="4" rx="5" ry="2"/>
+            <path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="980" y="330" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Data 业务库</text>
+        <text data-detail="context" x="980" y="346" class="t-muted" font-size="9" text-anchor="middle">Drift · 41 表 · schema v52</text>
+        </g>
+
+        <g id="node-fts" data-node-id="fts" data-node-label="FTS5 影子索引" tabindex="0" role="button" aria-label="聚焦FTS5 影子索引，CJK bigram · contentless, Flutter 应用 · Android" aria-pressed="false" data-node-kind="database" data-node-sublabel="CJK bigram · contentless" data-node-context="Flutter 应用 · Android">
+          <title>FTS5 影子索引 · CJK bigram · contentless · Flutter 应用 · Android</title>
+          <rect x="640" y="440" width="190" height="60" rx="6" class="c-mask"/>
+          <rect x="640" y="440" width="190" height="60" rx="6" class="c-database" data-animate="node" style="--step:11" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="database" class="semantic-sigil s-database" transform="translate(646 446) scale(0.6875)">
+            <ellipse cx="8" cy="4" rx="5" ry="2"/>
+            <path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="735" y="468" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">FTS5 影子索引</text>
+        <text data-detail="context" x="735" y="484" class="t-muted" font-size="9" text-anchor="middle">CJK bigram · contentless</text>
+        </g>
+
+        <g id="node-moli" data-node-id="moli" data-node-label="墨理对话" tabindex="0" role="button" aria-label="聚焦墨理对话，SSE · 可中断, Flutter 应用 · Android" aria-pressed="false" data-node-kind="frontend" data-node-sublabel="SSE · 可中断" data-node-context="Flutter 应用 · Android">
+          <title>墨理对话 · SSE · 可中断 · Flutter 应用 · Android</title>
+          <rect x="230" y="480" width="150" height="60" rx="6" class="c-mask"/>
+          <rect x="230" y="480" width="150" height="60" rx="6" class="c-frontend" data-animate="node" style="--step:3" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="frontend" class="semantic-sigil s-frontend" transform="translate(236 486) scale(0.6875)">
             <rect x="2" y="3" width="12" height="10" rx="2"/>
             <path d="M2 6.5h12"/>
             <circle cx="4.1" cy="4.8" r=".7" class="sigil-fill"/>
             <circle cx="6.3" cy="4.8" r=".7" class="sigil-fill"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="272.5" y="328" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">SmartInputPage</text>
-        <text data-detail="context" x="272.5" y="344" class="t-muted" font-size="9" text-anchor="middle">全局唯一 FAB</text>
+          <text data-node-label="" data-detail-anchor="" x="305" y="508" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">墨理对话</text>
+        <text data-detail="context" x="305" y="524" class="t-muted" font-size="9" text-anchor="middle">SSE · 可中断</text>
         </g>
 
-        <g id="node-ai_pipeline" data-node-id="ai_pipeline" data-node-label="AI 三段管线" tabindex="0" role="button" aria-label="聚焦AI 三段管线，分类 优化 抽取, 架构组件" aria-pressed="false" data-node-kind="backend" data-node-sublabel="分类 优化 抽取" data-node-tag="Riverpod" data-node-context="架构组件">
-          <title>AI 三段管线 · 分类 优化 抽取 · 架构组件 · Riverpod</title>
-          <rect x="385" y="300" width="135" height="62" rx="6" class="c-mask"/>
-          <rect x="385" y="300" width="135" height="62" rx="6" class="c-backend" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(391 306) scale(0.6875)">
+        <g id="node-features" data-node-id="features" data-node-label="15 功能模块" tabindex="0" role="button" aria-label="聚焦15 功能模块，任务 / 账单 / 事件 / 资料库 / 洞察, Flutter 应用 · Android" aria-pressed="false" data-node-kind="frontend" data-node-sublabel="任务 / 账单 / 事件 / 资料库 / 洞察" data-node-context="Flutter 应用 · Android">
+          <title>15 功能模块 · 任务 / 账单 / 事件 / 资料库 / 洞察 · Flutter 应用 · Android</title>
+          <rect x="230" y="620" width="170" height="60" rx="6" class="c-mask"/>
+          <rect x="230" y="620" width="170" height="60" rx="6" class="c-frontend" data-animate="node" style="--step:12" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="frontend" class="semantic-sigil s-frontend" transform="translate(236 626) scale(0.6875)">
+            <rect x="2" y="3" width="12" height="10" rx="2"/>
+            <path d="M2 6.5h12"/>
+            <circle cx="4.1" cy="4.8" r=".7" class="sigil-fill"/>
+            <circle cx="6.3" cy="4.8" r=".7" class="sigil-fill"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="315" y="648" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">15 功能模块</text>
+        <text data-detail="context" x="315" y="664" class="t-muted" font-size="7.9" text-anchor="middle">任务 / 账单 / 事件 / 资料库 / 洞察</text>
+        </g>
+
+        <g id="node-agent" data-node-id="agent" data-node-label="Agent 循环" tabindex="0" role="button" aria-label="聚焦Agent 循环，maxRounds 30 · 9 工具, Flutter 应用 · Android" aria-pressed="false" data-node-kind="backend" data-node-sublabel="maxRounds 30 · 9 工具" data-node-context="Flutter 应用 · Android">
+          <title>Agent 循环 · maxRounds 30 · 9 工具 · Flutter 应用 · Android</title>
+          <rect x="440" y="620" width="180" height="64" rx="6" class="c-mask"/>
+          <rect x="440" y="620" width="180" height="64" rx="6" class="c-backend" data-animate="node" style="--step:12" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(446 626) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="452.5" y="329" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">AI 三段管线</text>
-        <text data-detail="context" x="452.5" y="345" class="t-muted" font-size="9" text-anchor="middle">分类 优化 抽取</text>
-        <text data-detail="fine" x="452.5" y="354" class="t-backend" font-size="7" text-anchor="middle">Riverpod</text>
+          <text data-node-label="" data-detail-anchor="" x="530" y="650" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Agent 循环</text>
+        <text data-detail="context" x="530" y="666" class="t-muted" font-size="9" text-anchor="middle">maxRounds 30 · 9 工具</text>
         </g>
 
-        <g id="node-channel_router" data-node-id="channel_router" data-node-label="AiChannelRouter" tabindex="0" role="button" aria-label="聚焦AiChannelRouter，3 渠道槽 自动降级, 架构组件" aria-pressed="false" data-node-kind="backend" data-node-sublabel="3 渠道槽 自动降级" data-node-context="架构组件">
-          <title>AiChannelRouter · 3 渠道槽 自动降级 · 架构组件</title>
-          <rect x="565" y="300" width="145" height="62" rx="6" class="c-mask"/>
-          <rect x="565" y="300" width="145" height="62" rx="6" class="c-backend" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(571 306) scale(0.6875)">
-            <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
-          </g>
-          <text data-node-label="" data-detail-anchor="" x="637.5" y="329" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">AiChannelRouter</text>
-        <text data-detail="context" x="637.5" y="345" class="t-muted" font-size="9" text-anchor="middle">3 渠道槽 自动降级</text>
-        </g>
-
-        <g id="node-llm_openai" data-node-id="llm_openai" data-node-label="OpenAI Provider" tabindex="0" role="button" aria-label="聚焦OpenAI Provider，Dio SSE 流式, 架构组件" aria-pressed="false" data-node-kind="external" data-node-sublabel="Dio SSE 流式" data-node-context="架构组件">
-          <title>OpenAI Provider · Dio SSE 流式 · 架构组件</title>
-          <rect x="790" y="170" width="140" height="62" rx="6" class="c-mask"/>
-          <rect x="790" y="170" width="140" height="62" rx="6" class="c-external" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(796 176) scale(0.6875)">
+        <g id="node-platform" data-node-id="platform" data-node-label="Android 平台" tabindex="0" role="button" aria-label="聚焦Android 平台，12 MethodChannel · Workmanager, 架构组件" aria-pressed="false" data-node-kind="external" data-node-sublabel="12 MethodChannel · Workmanager" data-node-context="架构组件">
+          <title>Android 平台 · 12 MethodChannel · Workmanager · 架构组件</title>
+          <rect x="30" y="740" width="180" height="60" rx="6" class="c-mask"/>
+          <rect x="30" y="740" width="180" height="60" rx="6" class="c-external" data-animate="node" style="--step:12" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(36 746) scale(0.6875)">
             <rect x="2.5" y="5" width="8.5" height="8" rx="1.5"/>
             <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="860" y="199" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">OpenAI Provider</text>
-        <text data-detail="context" x="860" y="215" class="t-muted" font-size="9" text-anchor="middle">Dio SSE 流式</text>
-        </g>
-
-        <g id="node-llm_anthropic" data-node-id="llm_anthropic" data-node-label="Anthropic Provider" tabindex="0" role="button" aria-label="聚焦Anthropic Provider，多模型同协议, 架构组件" aria-pressed="false" data-node-kind="external" data-node-sublabel="多模型同协议" data-node-context="架构组件">
-          <title>Anthropic Provider · 多模型同协议 · 架构组件</title>
-          <rect x="790" y="430" width="140" height="62" rx="6" class="c-mask"/>
-          <rect x="790" y="430" width="140" height="62" rx="6" class="c-external" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(796 436) scale(0.6875)">
-            <rect x="2.5" y="5" width="8.5" height="8" rx="1.5"/>
-            <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5"/>
-          </g>
-          <text data-node-label="" data-detail-anchor="" x="860" y="459" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Anthropic Provider</text>
-        <text data-detail="context" x="860" y="475" class="t-muted" font-size="9" text-anchor="middle">多模型同协议</text>
-        </g>
-
-        <g id="node-validator" data-node-id="validator" data-node-label="字段契约校验" tabindex="0" role="button" aria-label="聚焦字段契约校验，违规自动重答, 架构组件" aria-pressed="false" data-node-kind="security" data-node-sublabel="违规自动重答" data-node-context="架构组件">
-          <title>字段契约校验 · 违规自动重答 · 架构组件</title>
-          <rect x="990" y="300" width="140" height="60" rx="6" class="c-mask"/>
-          <rect x="990" y="300" width="140" height="60" rx="6" class="c-security" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="security" class="semantic-sigil s-security" transform="translate(996 306) scale(0.6875)">
-            <path d="M8 2.2 13 4v3.5c0 3.1-1.8 5.4-5 6.5-3.2-1.1-5-3.4-5-6.5V4Z"/>
-            <path d="m5.8 8 1.5 1.5 3-3"/>
-          </g>
-          <text data-node-label="" data-detail-anchor="" x="1060" y="328" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">字段契约校验</text>
-        <text data-detail="context" x="1060" y="344" class="t-muted" font-size="9" text-anchor="middle">违规自动重答</text>
-        </g>
-
-        <g id="node-record_saver" data-node-id="record_saver" data-node-label="RecordSaver" tabindex="0" role="button" aria-label="聚焦RecordSaver，规范化 用户确认, 架构组件" aria-pressed="false" data-node-kind="backend" data-node-sublabel="规范化 用户确认" data-node-context="架构组件">
-          <title>RecordSaver · 规范化 用户确认 · 架构组件</title>
-          <rect x="790" y="560" width="145" height="60" rx="6" class="c-mask"/>
-          <rect x="790" y="560" width="145" height="60" rx="6" class="c-backend" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(796 566) scale(0.6875)">
-            <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
-          </g>
-          <text data-node-label="" data-detail-anchor="" x="862.5" y="588" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">RecordSaver</text>
-        <text data-detail="context" x="862.5" y="604" class="t-muted" font-size="9" text-anchor="middle">规范化 用户确认</text>
-        </g>
-
-        <g id="node-drift_db" data-node-id="drift_db" data-node-label="Drift / SQLite" tabindex="0" role="button" aria-label="聚焦Drift / SQLite，46 表 FTS5 检索, 架构组件" aria-pressed="false" data-node-kind="database" data-node-sublabel="46 表 FTS5 检索" data-node-context="架构组件">
-          <title>Drift / SQLite · 46 表 FTS5 检索 · 架构组件</title>
-          <rect x="480" y="560" width="145" height="62" rx="6" class="c-mask"/>
-          <rect x="480" y="560" width="145" height="62" rx="6" class="c-database" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="database" class="semantic-sigil s-database" transform="translate(486 566) scale(0.6875)">
-            <ellipse cx="8" cy="4" rx="5" ry="2"/>
-            <path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2"/>
-          </g>
-          <text data-node-label="" data-detail-anchor="" x="552.5" y="589" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Drift / SQLite</text>
-        <text data-detail="context" x="552.5" y="605" class="t-muted" font-size="9" text-anchor="middle">46 表 FTS5 检索</text>
-        </g>
-
-        <g id="node-assoc_index" data-node-id="assoc_index" data-node-label="关联索引表" tabindex="0" role="button" aria-label="聚焦关联索引表，实体解析 7 类, 架构组件" aria-pressed="false" data-node-kind="database" data-node-sublabel="实体解析 7 类" data-node-context="架构组件">
-          <title>关联索引表 · 实体解析 7 类 · 架构组件</title>
-          <rect x="480" y="710" width="145" height="60" rx="6" class="c-mask"/>
-          <rect x="480" y="710" width="145" height="60" rx="6" class="c-database" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="database" class="semantic-sigil s-database" transform="translate(486 716) scale(0.6875)">
-            <ellipse cx="8" cy="4" rx="5" ry="2"/>
-            <path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2"/>
-          </g>
-          <text data-node-label="" data-detail-anchor="" x="552.5" y="738" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">关联索引表</text>
-        <text data-detail="context" x="552.5" y="754" class="t-muted" font-size="9" text-anchor="middle">实体解析 7 类</text>
-        </g>
-
-        <g id="node-moli_agent" data-node-id="moli_agent" data-node-label="墨理对话 Agent" tabindex="0" role="button" aria-label="聚焦墨理对话 Agent，9 工具 可中断, 架构组件" aria-pressed="false" data-node-kind="backend" data-node-sublabel="9 工具 可中断" data-node-tag="Agent" data-node-context="架构组件">
-          <title>墨理对话 Agent · 9 工具 可中断 · 架构组件 · Agent</title>
-          <rect x="790" y="710" width="140" height="62" rx="6" class="c-mask"/>
-          <rect x="790" y="710" width="140" height="62" rx="6" class="c-backend" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(796 716) scale(0.6875)">
-            <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
-          </g>
-          <text data-node-label="" data-detail-anchor="" x="860" y="739" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">墨理对话 Agent</text>
-        <text data-detail="context" x="860" y="755" class="t-muted" font-size="9" text-anchor="middle">9 工具 可中断</text>
-        <text data-detail="fine" x="860" y="764" class="t-backend" font-size="7" text-anchor="middle">Agent</text>
+          <text data-node-label="" data-detail-anchor="" x="120" y="768" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Android 平台</text>
+        <text data-detail="context" x="120" y="784" class="t-muted" font-size="9" text-anchor="middle">12 MethodChannel · Workmanager</text>
         </g>
 
         <!-- Connection labels -->
-        <g data-detail="context" data-edge-from="user" data-edge-to="smart_input" data-edge-label="一句话" data-edge-key="0">
-          <rect x="163.1" y="310" width="38.8" height="14" rx="3" class="c-mask"/>
-          <text x="182.5" y="320" class="t-edge-emphasis" font-size="8" text-anchor="middle">一句话</text>
+        <g data-detail="context" data-edge-from="user" data-edge-to="smart_input" data-edge-label="一句话" data-edge-key="0" data-edge-id="u-si">
+          <rect x="175.6" y="310" width="38.8" height="14" rx="3" class="c-mask"/>
+          <text x="195" y="320" class="t-edge-emphasis" font-size="8" text-anchor="middle">一句话</text>
         </g>
-        <g data-detail="context" data-edge-from="smart_input" data-edge-to="ai_pipeline" data-edge-label="自然语言" data-edge-key="1">
-          <rect x="338.3" y="318" width="48.4" height="14" rx="3" class="c-mask"/>
-          <text x="362.5" y="328" class="t-edge-default" font-size="8" text-anchor="middle">自然语言</text>
+        <g data-detail="context" data-edge-from="user" data-edge-to="importer" data-edge-label="导入账单" data-edge-key="1" data-edge-id="u-imp">
+          <rect x="138.3" y="182" width="48.4" height="14" rx="3" class="c-mask"/>
+          <text x="162.5" y="192" class="t-edge-default" font-size="8" text-anchor="middle">导入账单</text>
         </g>
-        <g data-detail="context" data-edge-from="ai_pipeline" data-edge-to="channel_router" data-edge-label="三段流式" data-edge-key="2">
-          <rect x="518.3" y="311" width="48.4" height="14" rx="3" class="c-mask"/>
-          <text x="542.5" y="321" class="t-edge-emphasis" font-size="8" text-anchor="middle">三段流式</text>
+        <g data-detail="context" data-edge-from="user" data-edge-to="moli" data-edge-label="自然语言提问" data-edge-key="2" data-edge-id="u-moli">
+          <rect x="128.7" y="490" width="67.6" height="14" rx="3" class="c-mask"/>
+          <text x="162.5" y="500" class="t-edge-default" font-size="8" text-anchor="middle">自然语言提问</text>
         </g>
-        <g data-detail="context" data-edge-from="channel_router" data-edge-to="llm_openai" data-edge-label="SSE" data-edge-key="3">
-          <rect x="735" y="239" width="30" height="14" rx="3" class="c-mask"/>
-          <text x="750" y="249" class="t-edge-default" font-size="8" text-anchor="middle">SSE</text>
+        <g data-detail="context" data-edge-from="importer" data-edge-to="pipeline" data-edge-label="进管线抽取" data-edge-key="3" data-edge-id="imp-pipe">
+          <rect x="398.5" y="247" width="58" height="14" rx="3" class="c-mask"/>
+          <text x="427.5" y="257" class="t-edge-default" font-size="8" text-anchor="middle">进管线抽取</text>
         </g>
-        <g data-detail="context" data-edge-from="channel_router" data-edge-to="llm_anthropic" data-edge-label="SSE" data-edge-key="4">
-          <rect x="735" y="383" width="30" height="14" rx="3" class="c-mask"/>
-          <text x="750" y="393" class="t-edge-default" font-size="8" text-anchor="middle">SSE</text>
+        <g data-detail="context" data-edge-from="smart_input" data-edge-to="pipeline" data-edge-label="提交" data-edge-key="4" data-edge-id="si-pipe">
+          <rect x="395" y="310" width="30" height="14" rx="3" class="c-mask"/>
+          <text x="410" y="320" class="t-edge-default" font-size="8" text-anchor="middle">提交</text>
         </g>
-        <g data-detail="context" data-edge-from="channel_router" data-edge-to="validator" data-edge-label="结构化响应" data-edge-key="5">
-          <rect x="821" y="311" width="58" height="14" rx="3" class="c-mask"/>
-          <text x="850" y="321" class="t-edge-default" font-size="8" text-anchor="middle">结构化响应</text>
+        <g data-detail="context" data-edge-from="pipeline" data-edge-to="prompts" data-edge-label="提示词 + 契约" data-edge-key="5" data-edge-id="pipe-prompts">
+          <rect x="451.6" y="203" width="72.4" height="14" rx="3" class="c-mask"/>
+          <text x="487.8" y="213" class="t-edge-default" font-size="8" text-anchor="middle">提示词 + 契约</text>
         </g>
-        <g data-detail="context" data-edge-from="validator" data-edge-to="record_saver" data-edge-label="契约通过" data-edge-key="6">
-          <rect x="937.05" y="516" width="48.4" height="14" rx="3" class="c-mask"/>
-          <text x="961.25" y="526" class="t-edge-emphasis" font-size="8" text-anchor="middle">契约通过</text>
+        <g data-detail="context" data-edge-from="pipeline" data-edge-to="channel" data-edge-label="fast/main" data-edge-key="6" data-edge-id="pipe-chan">
+          <rect x="633.4" y="312" width="53.199999999999996" height="14" rx="3" class="c-mask"/>
+          <text x="660" y="322" class="t-edge-default" font-size="8" text-anchor="middle">fast/main</text>
         </g>
-        <g data-detail="context" data-edge-from="record_saver" data-edge-to="drift_db" data-edge-label="事务写入" data-edge-key="7">
-          <rect x="683.3" y="563" width="48.4" height="14" rx="3" class="c-mask"/>
-          <text x="707.5" y="573" class="t-edge-default" font-size="8" text-anchor="middle">事务写入</text>
+        <g data-detail="context" data-edge-from="channel" data-edge-to="llm" data-edge-label="SSE 调用" data-edge-key="7" data-edge-id="chan-llm">
+          <rect x="803.3" y="72" width="48.4" height="14" rx="3" class="c-mask"/>
+          <text x="827.5" y="82" class="t-edge-default" font-size="8" text-anchor="middle">SSE 调用</text>
         </g>
-        <g data-detail="context" data-edge-from="record_saver" data-edge-to="assoc_index" data-edge-label="实体注册" data-edge-key="8">
-          <rect x="624.8" y="645" width="48.4" height="14" rx="3" class="c-mask"/>
-          <text x="649" y="655" class="t-edge-dashed" font-size="8" text-anchor="middle">实体注册</text>
+        <g data-detail="context" data-edge-from="channel" data-edge-to="core_db" data-edge-label="供应商 / 模型池" data-edge-key="8" data-edge-id="chan-core">
+          <rect x="825" y="271" width="82" height="14" rx="3" class="c-mask"/>
+          <text x="866" y="281" class="t-edge-default" font-size="8" text-anchor="middle">供应商 / 模型池</text>
         </g>
-        <g data-detail="context" data-edge-from="moli_agent" data-edge-to="assoc_index" data-edge-label="关联查询" data-edge-key="9">
-          <rect x="683.3" y="727" width="48.4" height="14" rx="3" class="c-mask"/>
-          <text x="707.5" y="737" class="t-edge-dashed" font-size="8" text-anchor="middle">关联查询</text>
+        <g data-detail="context" data-edge-from="pipeline" data-edge-to="data_db" data-edge-label="确认后落库 · 7 表" data-edge-key="9" data-edge-id="pipe-db">
+          <rect x="432.4" y="386" width="91.6" height="14" rx="3" class="c-mask"/>
+          <text x="478.2" y="396" class="t-edge-emphasis" font-size="8" text-anchor="middle">确认后落库 · 7 表</text>
         </g>
-        <g data-detail="context" data-edge-from="bill_import" data-edge-to="ai_pipeline" data-edge-label="账单批量" data-edge-key="10">
-          <rect x="428.3" y="210.5" width="48.4" height="14" rx="3" class="c-mask"/>
-          <text x="452.5" y="220.5" class="t-edge-dashed" font-size="8" text-anchor="middle">账单批量</text>
+        <g data-detail="context" data-edge-from="data_db" data-edge-to="fts" data-edge-label="bigram 同步" data-edge-key="10" data-edge-id="db-fts">
+          <rect x="786.2" y="364" width="62.8" height="14" rx="3" class="c-mask"/>
+          <text x="817.6" y="374" class="t-edge-dashed" font-size="8" text-anchor="middle">bigram 同步</text>
+        </g>
+        <g data-detail="context" data-edge-from="moli" data-edge-to="agent" data-edge-label="对话" data-edge-key="11" data-edge-id="moli-agent">
+          <rect x="395" y="561" width="30" height="14" rx="3" class="c-mask"/>
+          <text x="410" y="571" class="t-edge-default" font-size="8" text-anchor="middle">对话</text>
+        </g>
+        <g data-detail="context" data-edge-from="agent" data-edge-to="fts" data-edge-label="query · MATCH 检索" data-edge-key="12" data-edge-id="agent-fts">
+          <rect x="533.05" y="690" width="96.39999999999999" height="14" rx="3" class="c-mask"/>
+          <text x="581.25" y="700" class="t-edge-default" font-size="8" text-anchor="middle">query · MATCH 检索</text>
+        </g>
+        <g data-detail="context" data-edge-from="agent" data-edge-to="llm" data-edge-label="SSE 流式对话" data-edge-key="13" data-edge-id="agent-llm">
+          <rect x="626.2" y="671" width="67.6" height="14" rx="3" class="c-mask"/>
+          <text x="660" y="681" class="t-edge-default" font-size="8" text-anchor="middle">SSE 流式对话</text>
+        </g>
+        <g data-detail="context" data-edge-from="platform" data-edge-to="features" data-edge-label="闹钟 / 洞察调度" data-edge-key="14" data-edge-id="platform-feat">
+          <rect x="134" y="630" width="82" height="14" rx="3" class="c-mask"/>
+          <text x="175" y="640" class="t-edge-default" font-size="8" text-anchor="middle">闹钟 / 洞察调度</text>
         </g>
 
         <!-- Boundary labels (foreground masks keep routes out of titles) -->
-
+        <g data-graph-role="structural-frame-label" data-composition-frame-id="0" data-composition-frame-kind="region" data-composition-frame-label="Flutter 应用 · Android">
+          <rect data-graph-role="structural-frame-label-mask" x="204" y="40" width="128.8" height="16" rx="3" class="c-mask"/>
+          <text data-boundary-label="" x="208" y="53" class="t-cloud" font-size="9" font-weight="600">Flutter 应用 · Android</text>
+        </g>
 
         <!-- Legend -->
         <g data-legend="" data-legend-bridge="">
-          <text x="40" y="804" class="t-primary" font-size="12" font-weight="650">图例</text>
-          <g data-legend-semantic-kind="frontend" data-legend-kind="frontend" data-legend-label="前端" data-legend-x="40" data-legend-baseline="824" data-legend-width="63">
-            <rect x="40" y="815" width="16" height="10" rx="2.5" class="c-frontend" stroke-width="1"/>
-            <text x="62" y="824" class="t-muted" font-size="10" font-weight="500">前端</text>
+          <text x="40" y="832" class="t-primary" font-size="12" font-weight="650">图例</text>
+          <g data-legend-semantic-kind="frontend" data-legend-kind="frontend" data-legend-label="前端" data-legend-x="40" data-legend-baseline="852" data-legend-width="63">
+            <rect x="40" y="843" width="16" height="10" rx="2.5" class="c-frontend" stroke-width="1"/>
+            <text x="62" y="852" class="t-muted" font-size="10" font-weight="500">前端</text>
           </g>
-          <g data-legend-semantic-kind="backend" data-legend-kind="backend" data-legend-label="后端" data-legend-x="125" data-legend-baseline="824" data-legend-width="63">
-            <rect x="125" y="815" width="16" height="10" rx="2.5" class="c-backend" stroke-width="1"/>
-            <text x="147" y="824" class="t-muted" font-size="10" font-weight="500">后端</text>
+          <g data-legend-semantic-kind="backend" data-legend-kind="backend" data-legend-label="后端" data-legend-x="125" data-legend-baseline="852" data-legend-width="63">
+            <rect x="125" y="843" width="16" height="10" rx="2.5" class="c-backend" stroke-width="1"/>
+            <text x="147" y="852" class="t-muted" font-size="10" font-weight="500">后端</text>
           </g>
-          <g data-legend-semantic-kind="database" data-legend-kind="database" data-legend-label="数据库" data-legend-x="210" data-legend-baseline="824" data-legend-width="73">
-            <rect x="210" y="815" width="16" height="10" rx="2.5" class="c-database" stroke-width="1"/>
-            <text x="232" y="824" class="t-muted" font-size="10" font-weight="500">数据库</text>
+          <g data-legend-semantic-kind="database" data-legend-kind="database" data-legend-label="数据库" data-legend-x="210" data-legend-baseline="852" data-legend-width="73">
+            <rect x="210" y="843" width="16" height="10" rx="2.5" class="c-database" stroke-width="1"/>
+            <text x="232" y="852" class="t-muted" font-size="10" font-weight="500">数据库</text>
           </g>
-          <g data-legend-semantic-kind="security" data-legend-kind="security" data-legend-label="安全" data-legend-x="305" data-legend-baseline="824" data-legend-width="63">
-            <rect x="305" y="815" width="16" height="10" rx="2.5" class="c-security" stroke-width="1"/>
-            <text x="327" y="824" class="t-muted" font-size="10" font-weight="500">安全</text>
+          <g data-legend-semantic-kind="cloud" data-legend-kind="cloud" data-legend-label="云服务" data-legend-x="305" data-legend-baseline="852" data-legend-width="73">
+            <rect x="305" y="843" width="16" height="10" rx="2.5" class="c-cloud" stroke-width="1"/>
+            <text x="327" y="852" class="t-muted" font-size="10" font-weight="500">云服务</text>
           </g>
-          <g data-legend-semantic-kind="external" data-legend-kind="external" data-legend-label="外部系统" data-legend-x="390" data-legend-baseline="824" data-legend-width="83">
-            <rect x="390" y="815" width="16" height="10" rx="2.5" class="c-external" stroke-width="1"/>
-            <text x="412" y="824" class="t-muted" font-size="10" font-weight="500">外部系统</text>
+          <g data-legend-semantic-kind="external" data-legend-kind="external" data-legend-label="外部系统" data-legend-x="400" data-legend-baseline="852" data-legend-width="83">
+            <rect x="400" y="843" width="16" height="10" rx="2.5" class="c-external" stroke-width="1"/>
+            <text x="422" y="852" class="t-muted" font-size="10" font-weight="500">外部系统</text>
           </g>
         </g>
       </svg>
@@ -5460,37 +5486,48 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       <div class="card">
         <div class="card-header">
           <div class="card-dot cyan"></div>
-          <h3>工程规模</h3>
+          <h3>录入即结构化</h3>
         </div>
         <ul>
-          <li>252,659 行 Dart / 855 个文件</li>
-          <li>3,406 个测试用例 / 85,914 行</li>
-          <li>5,004 次 Git 提交，约 5.5 个月</li>
+          <li>一句话经分类 → 优化 → 抽取三段管线，契约校验失败自动重答</li>
+          <li>账单导入 5 格式（CSV/XLS/XLSX/PDF/图片）× 3 银行 PDF 策略</li>
+          <li>去重三级强度：交易号全等 / 行指纹 / 同日金额 + 相似度，仅中档交 AI 判定</li>
         </ul>
       </div>
 
       <div class="card">
         <div class="card-header">
           <div class="card-dot emerald"></div>
-          <h3>AI 管线</h3>
+          <h3>反向查询</h3>
         </div>
         <ul>
-          <li>分类、优化、抽取三段式加字段契约校验</li>
-          <li>3 渠道槽位自动降级最多 5 次</li>
-          <li>40 个 YAML 提示词运行时注册表</li>
+          <li>墨理 Agent 30 轮工具循环，SSE 流式可中断</li>
+          <li>query 工具仅只读 SQL，200 行 / 2000 字符 / 50KB / 5s 四重限额</li>
+          <li>写库前强制 read_prompt_asset 取模块知识，hash 不匹配即失效重读</li>
         </ul>
       </div>
 
       <div class="card">
         <div class="card-header">
-          <div class="card-dot rose"></div>
-          <h3>数据能力</h3>
+          <div class="card-dot amber"></div>
+          <h3>检索与关联</h3>
         </div>
         <ul>
-          <li>账单 5 类格式 3 家银行专用策略</li>
-          <li>SHA256 指纹加 AI 双重去重</li>
-          <li>FTS5 中文二元分词检索</li>
-          <li>墨理 Agent 9 个工具可中断循环</li>
+          <li>FTS5 contentless 虚表 + CJK bigram 应用层自建索引</li>
+          <li>rowid = id×100 + moduleOffset，检索命中即反解模块无需 JOIN</li>
+          <li>FTS5 不可用自动降级 LIKE 兜底</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot violet"></div>
+          <h3>规模</h3>
+        </div>
+        <ul>
+          <li>252,659 行 Dart · 3,406 测试 / 85,914 行</li>
+          <li>49 表双库（data 41 + core 8）· 84 DAO · 32 Repository</li>
+          <li>40 YAML 提示词单一真源，seedVersion 91 哈希激活</li>
         </ul>
       </div>
     </div>
@@ -5708,7 +5745,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         if (fromUrl) return fromUrl;
         var saved = readStored();
         if (saved === 'light' || saved === 'dark') return saved;
-        return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        return 'dark';
       }
 
       function apply(theme) {
@@ -5726,8 +5763,8 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       apply(resolveInitial());
       btn.addEventListener('click', toggle);
 
-      // Follow live OS theme changes while the user has no explicit preference.
-      try {
+      // Live OS theme sync disabled: this site pins dark as the default.
+      if (false) try {
         var media = window.matchMedia('(prefers-color-scheme: light)');
         var onChange = function (e) {
           var saved = readStored();

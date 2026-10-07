@@ -3,234 +3,624 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chen Cangxuan · Software Engineer</title>
-<meta name="description" content="Personal site of Chen Cangxuan — AI-native apps, browser automation, DNS tooling and self-hosted infrastructure.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#05070d">
+<title>Chen Cangxuan · 把重复的数字劳动变成一条命令</title>
+<meta name="description" content="陈苍玄的个人主页 — AI 原生应用、浏览器自动化、离线学习系统与自托管工具链。六个可交互项目 + 架构图。">
+<meta property="og:title" content="Chen Cangxuan · 陈苍玄">
+<meta property="og:description" content="AI-native apps, browser automation, offline study systems. 把重复的数字劳动变成一条命令。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://a1286743184.github.io/">
+<meta property="og:image" content="https://a1286743184.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2305070d'/%3E%3Ctext x='10' y='44' font-family='monospace' font-size='30' fill='%2345d6e8'%3E%26gt;_%3C/text%3E%3C/svg%3E">
 <style>
+/* ============ embedded type ============ */
+@font-face{font-family:"JetBrains Mono";src:url(fonts/jbmono-regular.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"JetBrains Mono";src:url(fonts/jbmono-bold.woff2) format("woff2");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"LXGW WenKai Mono";src:url(fonts/wenkai-mono.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+/* ============ tokens ============ */
 :root{
-  --bg:#0a0e14; --bg2:#0d1420; --panel:#101826; --line:#1c2739;
-  --txt:#dbe4f0; --dim:#7d8ca3; --accent:#4dd0e1; --accent2:#7c9cff; --accent3:#c3f584;
-  --mono:ui-monospace,'Cascadia Code','JetBrains Mono',Consolas,'Courier New',monospace;
-  --sans:system-ui,-apple-system,'Segoe UI',sans-serif;
+  --bg:#05070d; --bg2:#080c15; --panel:#0b111d; --panel2:#0e1524;
+  --line:#1a2438; --line2:#243352;
+  --txt:#d5e1f2; --dim:#7a89a4; --faint:#4a5872;
+  --cy:#45d6e8; --cy-dim:rgba(69,214,232,.14);
+  --gn:#46e895; --gn-dim:rgba(70,232,149,.12);
+  --mono:"JetBrains Mono","LXGW WenKai Mono",ui-monospace,"Cascadia Code","Fira Code",Consolas,"Courier New",monospace;
+  --sans:"LXGW WenKai Mono","JetBrains Mono",system-ui,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",monospace;
+  --t-instant:90ms; --t-fast:180ms; --t-std:320ms; --t-med:480ms; --t-slow:760ms;
+  --e-out:cubic-bezier(.16,1,.3,1);
+  --e-circ:cubic-bezier(0,.55,.45,1);
+  --e-sharp:cubic-bezier(.65,0,.45,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{
-  background:var(--bg);color:var(--txt);font-family:var(--sans);line-height:1.75;overflow-x:hidden;
-  background-image:
-    linear-gradient(rgba(77,208,225,.045) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(77,208,225,.045) 1px,transparent 1px);
-  background-size:44px 44px;
+  background:var(--bg);color:var(--txt);font-family:var(--mono);
+  font-size:15px;line-height:1.7;overflow-x:hidden;
 }
-body::before{content:"";position:fixed;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse 80% 55% at 50% -8%,rgba(124,156,255,.14),transparent 60%),
-             radial-gradient(ellipse 60% 45% at 85% 110%,rgba(77,208,225,.07),transparent 60%);}
-.wrap{max-width:1020px;margin:0 auto;padding:0 26px;position:relative}
-a{color:var(--accent);text-decoration:none}
+::selection{background:rgba(69,214,232,.28);color:#fff}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-thumb{background:#1c2942;border-radius:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+a{color:var(--cy);text-decoration:none}
 a:hover{text-decoration:underline}
+button{font-family:inherit;color:inherit;background:none;border:none;cursor:pointer}
+:focus-visible{outline:2px solid var(--cy);outline-offset:2px;border-radius:3px}
+.skip{position:fixed;left:12px;top:-48px;z-index:200;background:var(--cy);color:#031018;
+  padding:8px 14px;border-radius:6px;font-weight:700;transition:top var(--t-fast) var(--e-out)}
+.skip:focus{top:12px}
 
-/* ---------- hero ---------- */
-header{padding:88px 0 40px}
-.term{background:rgba(13,20,32,.88);border:1px solid var(--line);border-radius:12px;
-  box-shadow:0 0 0 1px rgba(77,208,225,.06),0 18px 60px -22px rgba(124,156,255,.32);
-  backdrop-filter:blur(4px);overflow:hidden}
-.term-bar{display:flex;align-items:center;gap:8px;padding:11px 16px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.02)}
-.term-bar i{width:11px;height:11px;border-radius:50%;display:inline-block}
-.term-bar i:nth-child(1){background:#ff5f57}.term-bar i:nth-child(2){background:#febc2e}.term-bar i:nth-child(3){background:#28c840}
-.term-bar em{font-style:normal;color:var(--dim);font-family:var(--mono);font-size:.78rem;margin-left:8px}
-.term-body{padding:22px 24px;font-family:var(--mono);font-size:.95rem}
-.term-body .ln{color:var(--dim)}
-.term-body .ln b{color:var(--accent3);font-weight:600}
-.term-body h1{font-family:var(--mono);font-size:clamp(1.5rem,4.6vw,2.35rem);margin:14px 0 6px;line-height:1.25}
-.term-body h1 .u{color:var(--accent);border-bottom:2px solid rgba(77,208,225,.5)}
-.cursor{display:inline-block;width:10px;height:1.15em;background:var(--accent);vertical-align:-4px;margin-left:3px;animation:blink 1.05s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-.typed{color:var(--accent2);font-family:var(--mono);font-size:.98rem;min-height:1.6em}
-.term-body p.sub{color:var(--dim);font-size:.92rem;margin-top:14px;max-width:640px;font-family:var(--sans)}
+/* ============ chrome ============ */
+#progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:120;
+  background:linear-gradient(90deg,var(--cy),var(--gn));transition:width 80ms linear}
+#bgcanvas{position:absolute;inset:0;z-index:0;pointer-events:none}
+#hero{position:relative;overflow:hidden}
+@media(max-width:860px){#bgcanvas{display:none}}
+main{position:relative;z-index:1}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(18px,4vw,44px)}
 
-/* ---------- stats ---------- */
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:12px;margin:34px 0 8px}
-.stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;position:relative;overflow:hidden}
-.stat::after{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--accent),var(--accent2));opacity:.75}
-.stat b{display:block;font-family:var(--mono);font-size:1.42rem;color:#fff;letter-spacing:.5px}
-.stat span{color:var(--dim);font-size:.8rem}
+/* tmux bar */
+#tmux{position:fixed;left:0;right:0;bottom:0;z-index:110;display:flex;align-items:stretch;gap:0;
+  background:#070b13;border-top:1px solid var(--line);font-size:12px;height:32px;user-select:none}
+#tmux .seg{display:flex;align-items:center;padding:0 12px;border-right:1px solid var(--line);color:var(--dim);white-space:nowrap}
+#tmux .seg.name{color:var(--bg);background:var(--cy);font-weight:700}
+#tmux .win{display:flex;align-items:center;padding:0 10px;border-right:1px solid var(--line);color:var(--faint);transition:color var(--t-fast),background var(--t-fast)}
+#tmux .win:hover{color:var(--txt);background:var(--panel)}
+#tmux .win.on{color:var(--gn);background:var(--gn-dim)}
+#tmux .clock{margin-left:auto;border-left:1px solid var(--line);border-right:none;color:var(--cy);letter-spacing:.5px}
+@media(max-width:720px){#tmux .seg.hide-m{display:none}}
+@media(max-width:640px){#tmux .clock{display:none}#tmux .win{padding:0 9px}}
+@media(max-width:440px){#tmux .win{padding:0 12px}#tmux .win .lbl{display:none}#tmux .seg.name{padding:0 10px}}
 
-/* ---------- sections ---------- */
-section{padding:52px 0}
-.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:30px}
-.sec-head .no{font-family:var(--mono);color:var(--accent);font-size:.85rem}
-.sec-head h2{font-size:1.45rem;font-weight:650;letter-spacing:.3px}
-.sec-head .rule{flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+/* ============ hero ============ */
+#hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:clamp(64px,9vh,110px) 0 64px;position:relative}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:end;position:relative;z-index:1}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
+.hero-name{align-self:end;padding-bottom:8px}
+.kicker{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--cy);margin-bottom:18px}
+.kicker::before{content:"//";color:var(--faint);margin-right:10px}
+h1.display{
+  font-size:clamp(52px,9.2vw,132px);line-height:.96;letter-spacing:-.035em;font-weight:800;
+  color:#f2f7ff;margin:0 0 14px}
+h1.display .ac{color:var(--cy)}
+h1.display .cn{display:block;font-size:clamp(20px,2.6vw,34px);letter-spacing:.42em;font-weight:600;
+  color:var(--dim);margin-top:18px}
+.hero-sub{font-family:var(--sans);color:#aebfd8;font-size:clamp(14px,1.4vw,16px);max-width:34em;line-height:1.85}
+.hero-sub b{color:var(--txt);font-weight:600}
+.hero-hint{margin-top:22px;font-size:12px;color:var(--faint)}
+.hero-hint kbd{border:1px solid var(--line2);border-bottom-width:2px;border-radius:5px;padding:1px 7px;
+  color:var(--dim);font-family:var(--mono);font-size:11px;background:var(--panel)}
 
-/* ---------- project cards ---------- */
-.proj{background:linear-gradient(180deg,var(--panel),rgba(16,24,38,.6));border:1px solid var(--line);border-radius:14px;
-  padding:30px 32px;margin-bottom:26px;position:relative;overflow:hidden;
-  transition:border-color .25s,transform .25s,box-shadow .25s}
-.proj:hover{border-color:rgba(77,208,225,.45);transform:translateY(-3px);
-  box-shadow:0 0 0 1px rgba(77,208,225,.12),0 24px 70px -28px rgba(77,208,225,.3)}
-.proj::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(77,208,225,.5),transparent)}
-.proj .idx{position:absolute;right:26px;top:20px;font-family:var(--mono);color:var(--line);font-size:2.4rem;font-weight:700;user-select:none}
-.proj h3{font-size:1.28rem;margin-bottom:2px;color:#fff}
-.proj .en{font-family:var(--mono);font-size:.82rem;color:var(--dim);margin-bottom:14px}
-.proj .desc{color:#b6c2d4;font-size:.94rem;max-width:760px;margin-bottom:18px}
-.proj .desc em{font-style:normal;color:var(--accent3)}
-.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:10px;margin:16px 0 20px}
-.kv .k{background:rgba(10,14,20,.55);border:1px solid var(--line);border-radius:8px;padding:10px 13px}
-.kv .k b{display:block;font-family:var(--mono);font-size:1.02rem;color:var(--accent)}
-.kv .k span{font-size:.74rem;color:var(--dim)}
-.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
-.badges i{font-style:normal;font-family:var(--mono);font-size:.74rem;color:#9fb6d9;
-  border:1px solid var(--line);background:rgba(124,156,255,.06);border-radius:999px;padding:3px 12px}
-.proj .go{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:.86rem;
-  color:var(--accent);border:1px solid rgba(77,208,225,.35);border-radius:8px;padding:9px 18px;
-  transition:all .2s}
-.proj .go:hover{background:rgba(77,208,225,.1);text-decoration:none;box-shadow:0 0 24px -6px rgba(77,208,225,.5)}
-.proj .go::after{content:"→";transition:transform .2s}
-.proj .go:hover::after{transform:translateX(4px)}
+/* terminal */
+#term{position:relative;background:rgba(8,12,21,.86);border:1px solid var(--line2);border-radius:10px;
+  backdrop-filter:blur(8px);box-shadow:0 30px 80px -30px rgba(0,0,0,.8),0 0 0 1px rgba(69,214,232,.05),0 0 42px -18px rgba(69,214,232,.25);
+  display:flex;flex-direction:column;min-height:0}
+#term .bar{display:flex;align-items:center;gap:8px;padding:9px 14px;border-bottom:1px solid var(--line);
+  font-size:11px;color:var(--dim);letter-spacing:.08em}
+#term .bar .dots{display:flex;gap:5px}
+#term .bar .dots i{width:9px;height:9px;border-radius:50%;background:var(--line2)}
+#term .bar .dots i:first-child{background:#e8544f}
+#term .bar .dots i:nth-child(2){background:#d9a53f}
+#term .bar .dots i:last-child{background:var(--gn)}
+#term .bar .path{margin-left:auto}
+#term.out-open{flex:1}
+#term-out{padding:16px 18px 4px;font-size:13px;line-height:1.75;overflow-y:auto;
+  max-height:min(46vh,420px);min-height:120px;scrollbar-width:thin}
+#term-out .ln{white-space:pre-wrap;word-break:break-word;color:#a9bcd6}
+#term-out .ln.cmd{color:var(--txt)}
+#term-out .ln.cmd .ps{color:var(--gn)}
+#term-out .ln.ok{color:var(--gn)}
+#term-out .ln.err{color:#e8544f}
+#term-out .ln.dim{color:var(--faint)}
+#term-out .ln a{text-decoration:underline}
+#term-form{display:flex;align-items:center;gap:8px;padding:10px 18px 14px;border-top:1px solid transparent}
+#term-form .ps{color:var(--gn);font-size:13px;flex:none}
+#term-input{flex:1;background:none;border:none;outline:none;color:var(--txt);
+  font-family:var(--mono);font-size:13px;caret-color:var(--cy)}
+#term-input::placeholder{color:var(--faint)}
+#term.collapsed #term-out,#term.collapsed #term-form{display:none}
+#term .restore{display:none;padding:8px 18px;font-size:12px;color:var(--dim)}
+#term.collapsed .restore{display:block}
 
-/* ---------- diagram strip ---------- */
-.diagrams{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px}
-.dg{display:block;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;transition:all .22s}
-.dg:hover{border-color:rgba(124,156,255,.5);transform:translateY(-2px);text-decoration:none}
-.dg b{display:block;color:var(--txt);font-size:.9rem;margin-bottom:2px}
-.dg span{font-family:var(--mono);font-size:.73rem;color:var(--dim)}
-.dg .t{color:var(--accent2)}
+/* ============ sections ============ */
+section{padding:clamp(64px,10vh,120px) 0}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:clamp(28px,4vh,44px)}
+.sec-head .no{font-size:13px;color:var(--cy)}
+.sec-head h2{font-size:clamp(24px,3.4vw,40px);font-weight:750;letter-spacing:-.01em;color:#eef4fc}
+.sec-head .path{font-size:12px;color:var(--faint);letter-spacing:.05em}
+.sec-head .rule{flex:1;height:1px;background:linear-gradient(90deg,var(--line2),transparent)}
 
-/* ---------- footer ---------- */
-footer{padding:46px 0 60px;border-top:1px solid var(--line);margin-top:30px}
-footer .mail{font-family:var(--mono);color:var(--accent);font-size:1rem}
-footer .note{color:var(--dim);font-size:.82rem;margin-top:10px;font-family:var(--mono)}
-footer .note b{color:var(--accent3);font-weight:500}
-@media(max-width:640px){.term-body{padding:18px}.proj{padding:24px 20px}}
+/* project index rows */
+.proj{border-top:1px solid var(--line)}
+.proj:last-child{border-bottom:1px solid var(--line)}
+.prow{display:grid;width:100%;text-align:left;
+  grid-template-columns:56px minmax(0,1.5fr) minmax(0,1fr) 130px 96px;
+  gap:0 18px;align-items:center;padding:22px 10px;
+  transition:background var(--t-fast) var(--e-out),padding-left var(--t-fast) var(--e-out)}
+.prow:hover,.proj.open .prow{background:linear-gradient(90deg,var(--cy-dim),transparent 70%);padding-left:20px}
+.prow .idx{font-size:13px;color:var(--faint)}
+.proj.open .prow .idx{color:var(--cy)}
+.prow .pname{font-size:clamp(19px,2.4vw,27px);font-weight:700;color:#e9f0fa;letter-spacing:-.01em;line-height:1.25}
+.prow .pname small{display:block;font-size:11.5px;font-weight:500;color:var(--dim);letter-spacing:.06em;margin-top:3px}
+.prow .pline{font-size:12.5px;color:var(--dim);line-height:1.6}
+.prow .pstat{font-size:12.5px;color:#8fa5c4;text-align:right}
+.prow .pstat b{display:block;color:var(--cy);font-size:15px;font-weight:700}
+.spark{width:86px;height:26px;display:block;margin-left:auto}
+.prow .chev{font-size:15px;color:var(--faint);transition:transform var(--t-std) var(--e-out)}
+.proj.open .chev{transform:rotate(90deg);color:var(--cy)}
+@media(max-width:860px){
+  .prow{grid-template-columns:40px minmax(0,1fr) 30px;grid-template-rows:auto auto}
+  .prow .pline{grid-column:2;grid-row:2}
+  .prow .pstat{display:none}.spark{display:none}
+  .prow .chev{grid-row:1;grid-column:3;align-self:center}
+}
+.ppanel{display:grid;grid-template-rows:0fr;transition:grid-template-rows var(--t-med) var(--e-out)}
+.proj.open .ppanel{grid-template-rows:1fr}
+.ppanel>div{overflow:hidden}
+.ppanel-inner{padding:6px 10px 30px 84px}
+@media(max-width:860px){.ppanel-inner{padding-left:10px}}
+.ppanel .desc{font-family:var(--sans);color:#a9bcd6;max-width:52em;font-size:14.5px;line-height:1.9;margin-bottom:18px}
+.ppanel .desc em{font-style:normal;color:var(--gn)}
+.kv{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.kv .k{border:1px solid var(--line);background:var(--panel);border-radius:7px;padding:8px 14px;min-width:128px}
+.kv .k b{display:block;color:var(--cy);font-size:15px}
+.kv .k span{font-size:11px;color:var(--dim)}
+.badges{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px}
+.badges i{font-style:normal;font-size:11px;color:#8fa5c4;border:1px solid var(--line);
+  background:rgba(69,214,232,.05);border-radius:999px;padding:2px 11px}
+.go{display:inline-flex;align-items:center;gap:9px;font-size:13px;color:var(--cy);
+  border:1px solid rgba(69,214,232,.4);border-radius:8px;padding:9px 18px;
+  transition:background var(--t-fast),box-shadow var(--t-fast),transform var(--t-fast)}
+.go:hover{background:var(--cy-dim);box-shadow:0 0 26px -8px rgba(69,214,232,.55);text-decoration:none;transform:translateY(-1px)}
+.go::after{content:"→"}
+
+/* diagrams marquee */
+#flow{overflow:hidden;border-block:1px solid var(--line);padding:34px 0;background:var(--bg2)}
+.mq-wrap{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.mq{display:flex;gap:14px;width:max-content;animation:mq 46s linear infinite}
+.mq-wrap:hover .mq{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.mq{animation:none;flex-wrap:wrap;justify-content:center}}
+.chip{display:flex;flex-direction:column;gap:4px;min-width:238px;padding:16px 18px;
+  border:1px solid var(--line);border-radius:10px;background:var(--panel);
+  transition:border-color var(--t-fast),transform var(--t-fast) var(--e-out),box-shadow var(--t-fast)}
+.chip:hover{border-color:rgba(69,214,232,.5);transform:translateY(-3px);
+  box-shadow:0 16px 40px -18px rgba(69,214,232,.35);text-decoration:none}
+.chip b{color:#e9f0fa;font-size:14.5px}
+.chip .t{color:var(--cy);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.chip span{color:var(--dim);font-size:11.5px}
+
+/* stats strip */
+#stats .band{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--panel)}
+#stats .cell{padding:30px 28px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);position:relative}
+#stats .cell::after{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:linear-gradient(180deg,var(--cy),transparent)}
+#stats b{display:block;font-size:clamp(30px,4vw,46px);font-weight:800;color:#eef4fc;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+#stats b em{font-style:normal;color:var(--cy)}
+#stats span{font-size:12px;color:var(--dim)}
+
+/* contact */
+#contact .big{font-size:clamp(34px,6vw,74px);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:28px}
+#contact .big a{color:#eef4fc;border-bottom:3px solid var(--cy);transition:color var(--t-fast),border-color var(--t-fast)}
+#contact .big a:hover{color:var(--cy);text-decoration:none}
+#contact .meta{display:flex;flex-wrap:wrap;gap:10px 34px;font-size:13px;color:var(--dim);margin-bottom:60px}
+#contact .note{font-size:11.5px;color:var(--faint)}
+
+/* reveal */
+.rev{opacity:0;transform:translateY(26px);transition:opacity var(--t-med) var(--e-out),transform var(--t-med) var(--e-out);transition-delay:var(--d,0ms)}
+.rev.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rev{opacity:1;transform:none;transition:none}}
+
+/* palette */
+#pal{position:fixed;inset:0;z-index:150;display:none;align-items:flex-start;justify-content:center;
+  padding-top:14vh;background:rgba(3,5,10,.68);backdrop-filter:blur(6px)}
+#pal.open{display:flex}
+#pal .box{width:min(600px,92vw);background:var(--panel2);border:1px solid var(--line2);border-radius:12px;
+  overflow:hidden;box-shadow:0 40px 100px -30px rgba(0,0,0,.9),0 0 60px -30px rgba(69,214,232,.4)}
+#pal input{width:100%;background:none;border:none;outline:none;color:var(--txt);font-family:var(--mono);
+  font-size:15px;padding:16px 18px;border-bottom:1px solid var(--line)}
+#pal input::placeholder{color:var(--faint)}
+#pal ul{list-style:none;max-height:320px;overflow-y:auto;padding:6px}
+#pal li{display:flex;justify-content:space-between;gap:14px;padding:10px 14px;border-radius:7px;
+  font-size:13.5px;color:#a9bcd6;cursor:pointer}
+#pal li .k{color:var(--faint);font-size:11px}
+#pal li.sel,#pal li:hover{background:var(--cy-dim);color:var(--txt)}
+#pal li.sel .k{color:var(--cy)}
+#pal .foot{padding:8px 14px;border-top:1px solid var(--line);font-size:11px;color:var(--faint);display:flex;gap:16px}
 </style>
 </head>
 <body>
-<div class="wrap">
+<a class="skip" href="#work">跳到项目列表</a>
+<div id="progress" aria-hidden="true"></div>
 
-<header>
-  <div class="term">
-    <div class="term-bar"><i></i><i></i><i></i><em>chencangxuan@dev — zsh</em></div>
-    <div class="term-body">
-      <div class="ln">$ whoami</div>
-      <h1>Chen <span class="u">Cangxuan</span><span class="cursor"></span></h1>
-      <div class="ln" style="margin-bottom:8px">$ cat focus.txt | while read area; do build $area; done</div>
-      <div class="typed" id="typed"></div>
-      <p class="sub">工程师，长期主义者。关注 AI 应用工程、浏览器自动化、DNS 基础设施与自托管工具链——把重复的数字劳动变成一条命令。</p>
+<main>
+<!-- ================= HERO ================= -->
+<header id="hero">
+  <canvas id="bgcanvas" aria-hidden="true"></canvas>
+  <div class="wrap hero-grid">
+    <div class="hero-name">
+      <p class="kicker">portfolio&nbsp;/&nbsp;v3&nbsp;·&nbsp;shell&nbsp;session</p>
+      <h1 class="display">CHEN<br><span class="ac">CANGXUAN</span><span class="cn">陈苍玄</span></h1>
+      <p class="hero-sub">工程师，长期主义者。做 <b>AI 原生应用</b>、<b>浏览器自动化</b>与<b>离线学习系统</b>——把重复的数字劳动变成一条命令。全部主页内容由真实代码库考证。</p>
+      <p class="hero-hint">这是一台真的终端：输入 <kbd>help</kbd> 试试 · 按 <kbd>/</kbd> 全站搜索 · 背后的星图就是六个项目，<b>可以点</b></p>
     </div>
-  </div>
-
-  <div class="stats">
-    <div class="stat"><b>252,659</b><span>单个应用 Dart 代码行</span></div>
-    <div class="stat"><b>3,406</b><span>自动化测试用例</span></div>
-    <div class="stat"><b>5,004</b><span>Git 提交 / 5.5 个月</span></div>
-    <div class="stat"><b>10,092</b><span>办公自动化管线行数</span></div>
-    <div class="stat"><b>2,844+4,856</b><span>知识点 + 习题生产</span></div>
+    <div id="term" class="out-open" aria-label="交互终端">
+      <div class="bar"><span class="dots"><i></i><i></i><i></i></span> ccx@pages — zsh <span class="path">~</span></div>
+      <div id="term-out" aria-live="polite"></div>
+      <form id="term-form" autocomplete="off">
+        <span class="ps">$</span>
+        <input id="term-input" placeholder="type help" aria-label="终端命令输入" spellcheck="false">
+      </form>
+      <button class="restore" hidden></button>
+    </div>
   </div>
 </header>
 
-<section id="projects">
-  <div class="sec-head"><span class="no">01</span><h2>Selected Projects</h2><span class="rule"></span></div>
-
-  <article class="proj">
-    <div class="idx">01</div>
-    <h3>SymNex 灵襄</h3>
-    <div class="en">AI-native personal data manager · Android</div>
-    <p class="desc">以 AI 为核心的 All-in-One 个人数据管理应用：一句话录入，AI 三段管线（分类 → 优化 → 抽取）自动结构化，对话式 Agent 反向查询——把任务、账单、知识等生活碎片沉淀成<em>可关联检索的个人数据索引</em>。内置 5 类账单导入与指纹 + AI 双重去重。</p>
-    <div class="kv">
-      <div class="k"><b>252,659</b><span>行 Dart 代码</span></div>
-      <div class="k"><b>3,406</b><span>测试用例 / 85,914 行</span></div>
-      <div class="k"><b>5,004</b><span>次提交 · 5.5 个月</span></div>
-      <div class="k"><b>46 表</b><span>SQLite + FTS5 检索</span></div>
-      <div class="k"><b>40 个</b><span>YAML 提示词注册</span></div>
-    </div>
-    <div class="badges"><i>Flutter</i><i>Dart 3.11</i><i>Riverpod 3</i><i>Drift / SQLite FTS5</i><i>SSE 流式</i><i>Agent 工具循环</i><i>Workmanager</i></div>
-    <a class="go" href="projects/symnex.html">View architecture diagram</a>
-  </article>
-
-  <article class="proj">
-    <div class="idx">02</div>
-    <h3>公基学习系统</h3>
-    <div class="en">gongji-study · AI knowledge pipeline + offline study app · Desktop</div>
-    <p class="desc">把 9 册约 600 页的手工学习笔记 PDF，经 29 个幂等脚本的 AI 生产管线，转成 <em>2,844 个知识点 + 4,856 道题</em>的结构化知识库；再以 Tauri 2 + React 19 构建完全离线的刷题应用，FSRS 间隔复习引擎驱动，数据不出本机。全部题目经过锚点核验、盲答校验、独立审题三道工序。</p>
-    <div class="kv">
-      <div class="k"><b>600 页</b><span>笔记 → 结构化</span></div>
-      <div class="k"><b>2,844</b><span>知识点 · 409 节</span></div>
-      <div class="k"><b>4,856</b><span>题目 · 三工序质检</span></div>
-      <div class="k"><b>29 个</b><span>幂等管线脚本</span></div>
-      <div class="k"><b>21 帧</b><span>视觉回归门</span></div>
-    </div>
-    <div class="badges"><i>Tauri 2</i><i>Rust</i><i>React 19</i><i>TypeScript</i><i>ts-fsrs</i><i>Zustand</i><i>Python 管线</i><i>Vitest</i></div>
-    <a class="go" href="projects/gongji.html">View dataflow diagram</a>
-  </article>
-
-  <article class="proj">
-    <div class="idx">03</div>
-    <h3>情景面试练习工作台</h3>
-    <div class="en">scenario-learning workstation · Next.js study system</div>
-    <p class="desc">基于 Next.js 14 的情景模拟题学习系统：自建 701 行解析器兼容 3 种例题格式，把 23 门课程讲义变成知识卡片与 <em>169 道左右对照练习</em>（老师原文 / 我的作答分栏）；AI 助手自动注入题目上下文并支持联网检索；练习记录不可变 + 幂等键，27 张 SQLite 表持久化学习痕迹。</p>
-    <div class="kv">
-      <div class="k"><b>23 门</b><span>课程讲义解析</span></div>
-      <div class="k"><b>169</b><span>对照练习例题</span></div>
-      <div class="k"><b>91 / 91</b><span>测试用例通过</span></div>
-      <div class="k"><b>27 表</b><span>SQLite · WAL</span></div>
-      <div class="k"><b>42 帧</b><span>截图回归矩阵</span></div>
-    </div>
-    <div class="badges"><i>Next.js 14</i><i>React 18</i><i>TypeScript 5.4</i><i>Zustand</i><i>node:sqlite</i><i>Vitest 4</i><i>framer-motion</i></div>
-    <a class="go" href="projects/scenario.html">View architecture diagram</a>
-  </article>
-
-  <article class="proj">
-    <div class="idx">04</div>
-    <h3>企业微信考勤月结管线</h3>
-    <div class="en">wecom attendance pipeline · browser automation + data merging</div>
-    <p class="desc">一条命令完成月度考勤结算：CDP 驱动真实 Chrome 自动导出三类审批单，与打卡报表、协作单位考勤表做<em>三源优先级合并</em>，人事规则（借调 / 产假 / 跨天折算）配置化执行，最终由 ExcelJS 按模板生成带备注的月度汇总表并自动归档。月度人工核对数小时的工作压缩到分钟级。</p>
-    <div class="kv">
-      <div class="k"><b>10,092</b><span>行代码 / 40 文件</span></div>
-      <div class="k"><b>3 源</b><span>优先级数据合并</span></div>
-      <div class="k"><b>360 格</b><span>单月覆盖 12 人</span></div>
-      <div class="k"><b>6 个月</b><span>连续自动归档</span></div>
-      <div class="k"><b>100%</b><span>下载环节无人值守</span></div>
-    </div>
-    <div class="badges"><i>Node.js 18</i><i>Chrome DevTools Protocol</i><i>Python 3</i><i>LibreOffice 桥</i><i>ExcelJS</i><i>YAML 配置化</i></div>
-    <a class="go" href="projects/wechat.html">View dataflow diagram</a>
-  </article>
-</section>
-
-<section id="diagrams">
-  <div class="sec-head"><span class="no">02</span><h2>Interactive Diagrams</h2><span class="rule"></span></div>
-  <p style="color:var(--dim);font-size:.9rem;margin-bottom:22px">每个项目附一张可交互架构 / 数据流图（暗色主题、可缩放平移、支持轨迹动画与 PNG 导出）。由 Archify 从真实代码结构生成并通过布局验证。</p>
-  <div class="diagrams">
-    <a class="dg" href="projects/symnex.html"><b>SymNex 架构</b><span class="t">architecture</span><br><span>AI 管线 · Agent · FTS5</span></a>
-    <a class="dg" href="projects/gongji.html"><b>公基系统数据流</b><span class="t">dataflow</span><br><span>PDF → 知识库 → 复习</span></a>
-    <a class="dg" href="projects/scenario.html"><b>面试工作台架构</b><span class="t">architecture</span><br><span>Next.js · SQLite 27 表</span></a>
-    <a class="dg" href="projects/wechat.html"><b>考勤月结数据流</b><span class="t">dataflow</span><br><span>CDP · 三源合并</span></a>
+<!-- ================= WORK ================= -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head"><span class="no">01</span><h2>Selected Work</h2><span class="path">~/projects · 6 项 · ls -la</span><span class="rule"></span></div>
+    <div id="projlist"><!-- rows injected by js from PROJ data --><noscript>启用 JavaScript 查看项目列表，或直接访问 /projects/ 下的架构图页面。</noscript></div>
   </div>
 </section>
 
-<footer id="contact">
-  <div class="sec-head"><span class="no">03</span><h2>Contact</h2><span class="rule"></span></div>
-  <p>GitHub: <a href="https://github.com/a1286743184">github.com/a1286743184</a></p>
-  <p class="mail">domains@chencangxuan.com</p>
-  <p class="note">root page for <b>chencangxuan.is-a.dev</b> · hosted on GitHub Pages · built with plain HTML, no frameworks were harmed</p>
-</footer>
+<!-- ================= FLOW ================= -->
+<section id="flow" aria-label="可交互架构图">
+  <div class="wrap" style="margin-bottom:26px">
+    <div class="sec-head" style="margin-bottom:0"><span class="no">02</span><h2>Interactive Diagrams</h2><span class="path">archify · 暗色 · 缩放平移 · 轨迹动画 · PNG 导出</span><span class="rule"></span></div>
+  </div>
+  <div class="mq-wrap"><div class="mq" id="mq"><!-- chips injected --></div></div>
+</section>
 
+<!-- ================= STATS ================= -->
+<section id="stats">
+  <div class="wrap">
+    <div class="sec-head"><span class="no">03</span><h2>By The Numbers</h2><span class="path">全部实测 · 可复核</span><span class="rule"></span></div>
+    <div class="band">
+      <div class="cell rev" style="--d:0ms"><b><span class="cnt" data-n="421811">0</span><em>+</em></b><span>行在役工程代码 · 6 库实测</span></div>
+      <div class="cell rev" style="--d:60ms"><b><span class="cnt" data-n="4956">0</span></b><span>自动化测试用例 · 全绿</span></div>
+      <div class="cell rev" style="--d:120ms"><b><span class="cnt" data-n="6609">0</span><em>+</em></b><span>次 git 提交 · 单人</span></div>
+      <div class="cell rev" style="--d:180ms"><b><span class="cnt" data-n="103">0</span></b><span>张本地 SQLite 表在跑</span></div>
+      <div class="cell rev" style="--d:240ms"><b><span class="cnt" data-n="600">0</span></b><span>页手写笔记炼成知识库</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head"><span class="no">04</span><h2>Contact</h2><span class="path">~/exit</span><span class="rule"></span></div>
+    <p class="big rev"><a href="mailto:domains@chencangxuan.com">say hi →</a></p>
+    <div class="meta rev" style="--d:80ms">
+      <span>github · <a href="https://github.com/a1286743184">github.com/a1286743184</a></span>
+      <span>mail · <a href="mailto:domains@chencangxuan.com">domains@chencangxuan.com</a></span>
+      <span>domain · <a href="https://chencangxuan.is-a.dev">chencangxuan.is-a.dev</a></span>
+    </div>
+    <p class="note rev" style="--d:140ms">root page for chencangxuan.is-a.dev · hosted on GitHub Pages · one html + 3 subset webfonts · zero framework, zero CDN · figures verified against local repositories 2026-10</p>
+  </div>
+</section>
+</main>
+
+<!-- tmux bar -->
+<nav id="tmux" aria-label="页面导航">
+  <span class="seg name">ccx.dev</span>
+  <button class="win" data-go="#hero" title="shell">0<span class="lbl">:sh</span></button>
+  <button class="win" data-go="#work" title="work">1<span class="lbl">:work</span></button>
+  <button class="win" data-go="#flow" title="flow">2<span class="lbl">:flow</span></button>
+  <button class="win hide-m" data-go="#stats" title="stats">3<span class="lbl">:stats</span></button>
+  <button class="win hide-m" data-go="#contact" title="contact">4<span class="lbl">:contact</span></button>
+  <span class="seg clock hide-m" id="clock">--:--:--</span>
+</nav>
+
+<!-- command palette -->
+<div id="pal" role="dialog" aria-label="命令面板">
+  <div class="box">
+    <input id="pal-input" placeholder="跳转到… 输入项目名或区块" aria-label="搜索">
+    <ul id="pal-list"></ul>
+    <div class="foot"><span>↑↓ 选择</span><span>↵ 跳转</span><span>esc 关闭</span></div>
+  </div>
 </div>
+
 <script>
-(function(){
-  const lines=[
-    'building AI-native apps that turn sentences into structure',
-    'driving real Chrome with CDP to kill repetitive office work',
-    'running personal DNS infrastructure on Cloudflare',
-    'shipping 3,406 tests before shipping features'
-  ];
-  const el=document.getElementById('typed');let li=0,ci=0,del=false;
-  function tick(){
-    const s=lines[li];
-    if(!del){ci++;el.textContent=s.slice(0,ci);if(ci===s.length){del=true;setTimeout(tick,1900);return;}}
-    else{ci--;el.textContent=s.slice(0,ci);if(ci===0){del=false;li=(li+1)%lines.length;setTimeout(tick,420);return;}}
-    setTimeout(tick,del?22:52);
+/* ================= data ================= */
+const PROJ=[
+ {id:"symnex",name:"SymNex 灵襄",en:"ai-native personal data manager · android",line:"一句话录入，AI 三段管线自动结构化，Agent 反向查询",stat:"252,659",statLabel:"行 Dart",dia:"projects/symnex.html",dtype:"architecture",
+  desc:"以 AI 为核心的个人数据管理应用：一句话录入，经<em>分类 → 优化 → 抽取</em>三段管线自动结构化；对话式 Agent「墨理」30 轮工具循环反向查询自己的数据；FTS5 + CJK bigram 自建全文索引。账单导入 5 格式 × 3 银行 PDF 策略，三级强度去重，AI 只判不择优。",
+  kv:[["252,659","行 Dart · 实测"],["3,406","测试用例 / 85,914 行"],["49 表","双库 · 84 DAO"],["40 个","YAML 提示词注册"]],
+  tags:["Flutter","Dart 3.11","Riverpod 3","Drift / SQLite FTS5","SSE 流式","Agent 工具循环","Workmanager"]},
+ {id:"tripplanner",name:"TripPlanner",en:"ai trip-planning workspace · android",line:"自由 Markdown 经 LLM 编译成 TripDoc，确定性编译器生成路线图",stat:"85,878",statLabel:"行 Dart + 47k 测试",dia:"projects/tripplanner.html",dtype:"architecture",
+  desc:"AI 行程规划工作台：LLM 只产出 authoring TripDoc <em>草稿</em>，路线与时间轴由确定性语义编译器生成（9ms 级），校验失败返回结构化 issue 而非让模型盲修——真实日志复盘后的架构决策。高德离线地图 + 地点绑定闭环 + Gitee 自动更新与日志回流。",
+  kv:[["85,878","行实现 + 47,277 行测试"],["1,459","测试用例 / 234 文件"],["508","次提交 · 12 天"],["14 表","Drift SQLite · 11 DAO"]],
+  tags:["Flutter","go_router","Drift","高德离线地图","OpenAI/Anthropic 双协议","Gitee 自动更新","六档测试门禁"]},
+ {id:"loomory",name:"Loomory",en:"memory-weaving desktop app · windows",line:"磁盘素材流水线 × 杂志排版故事集，素材与故事彻底解耦",stat:"1,097",statLabel:"次提交 · 3 个月",dia:"projects/loomory.html",dtype:"architecture",
+  desc:"记忆编织桌面应用：影像整理（EXIF 重命名 · 选片四级 · ffmpeg 剪辑）与故事编辑（magazine_renderer 杂志排版 · AI 游记写作）两半对等。故事仅以<em>时间范围 + 文字</em>绑定影像——删故事不动文件、改文件不动故事。Rust freeze_watcher 看门狗独立进程做冻屏检测与 minidump。",
+  kv:[["46,918","行 Dart · 235 文件"],["18,776","行测试 + golden"],["13 表","Drift SQLite"],["59MB","7 套字体排版系统"]],
+  tags:["Flutter Desktop","media_kit","drift","Rust sidecar","Inno Setup","marionette 集成测试"]},
+ {id:"gongji",name:"公基学习系统",en:"ai knowledge pipeline + offline study app",line:"600 页手写笔记 → 2,844 知识点 + 4,856 题的离线刷题应用",stat:"2,844",statLabel:"知识点 / 4,856 题",dia:"projects/gongji.html",dtype:"dataflow",
+  desc:"9 册约 600 页手工笔记 PDF，经 29 个幂等脚本 + LLM 视觉转写管线，炼成结构化知识库；Tauri 2 完全离线应用，ts-fsrs 间隔复习引擎驱动。题目经<em>锚点核验 · 盲答校验 · 独立审题</em>三道工序，出口硬门 exit 0 才放行。",
+  kv:[["600 页","9 册 · 每册 sha256"],["4,856","题 · active 4,763"],["29 个","幂等管线脚本"],["21 帧","视觉回归 md5 全异"]],
+  tags:["Tauri 2","React 19","TypeScript","ts-fsrs","Zustand","Python 管线","Vitest 47"]},
+ {id:"scenario",name:"情景面试练习工作台",en:"scenario-learning workstation · next.js 14",line:"23 门讲义解析成左右对照练习，AI 助手注入题目上下文",stat:"169",statLabel:"道对照练习 · 91 用例",dia:"projects/scenario.html",dtype:"architecture",
+  desc:"Next.js 14 学习系统：自建 701 行解析器以一条正则兼容 3 种标题世代，199 个题头经质量门槛收敛为 169 道有效练习（老师原文 / 我的作答分栏）。练习记录<em>幂等键 + 乐观锁 + 操作键重放</em>三保险，提交后物理不可变；42 帧截图回归矩阵三视口守护。",
+  kv:[["701 行","解析器 · 3 世代兼容"],["27 表","SQLite WAL · 6 域"],["91 / 91","vitest 用例"],["42 帧","截图回归 · 3 视口"]],
+  tags:["Next.js 14","React 18","TypeScript 5.4","node:sqlite","Zustand","framer-motion","Vitest 4"]},
+ {id:"wechat",name:"企业微信考勤月结管线",en:"wecom attendance pipeline · cdp automation",line:"CDP 驱动真实 Chrome 导出审批单，三源优先级合并出月度报表",stat:"12,098",statLabel:"行 · 6 个月连续归档",dia:"projects/wechat.html",dtype:"dataflow",
+  desc:"一条命令完成月度考勤结算：CDP 驱动真实 Chrome 导出请假 / 外出 / 补卡三类审批单，与打卡报表、协作单位考勤表做<em>三源优先级合并</em>，人事规则（借调 / 产假 / 跨天折算）配置化执行，ExcelJS 按模板生成月度汇总表并自动归档。每格留痕可复核。",
+  kv:[["12,098","行 / 49 文件"],["3 源","优先级 ×4>√3>/2"],["360 格","12 人 × 30 天"],["6 个月","连续自动归档"]],
+  tags:["Node.js 18","Chrome DevTools Protocol","Python 3","LibreOffice 桥","ExcelJS","YAML 配置化"]}
+];
+
+/* ================= helpers ================= */
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ================= project rows ================= */
+const list=$("#projlist");
+PROJ.forEach((p,i)=>{
+  const art=document.createElement("article");
+  art.className="proj rev";art.style.setProperty("--d",(i*70)+"ms");art.id="proj-"+p.id;
+  art.innerHTML=`
+   <button class="prow" aria-expanded="false" aria-controls="pp-${p.id}">
+     <span class="idx">0${i+1}</span>
+     <span class="pname">${p.name}<small>${p.en}</small></span>
+     <span class="pline">${p.line}</span>
+     <span class="pstat"><b>${p.stat}</b>${p.statLabel}</span>
+     <canvas class="spark" width="172" height="52" aria-hidden="true"></canvas>
+     <span class="chev" aria-hidden="true">›</span>
+   </button>
+   <div class="ppanel" id="pp-${p.id}"><div><div class="ppanel-inner">
+     <p class="desc">${p.desc}</p>
+     <div class="kv">${p.kv.map(k=>`<div class="k"><b>${k[0]}</b><span>${k[1]}</span></div>`).join("")}</div>
+     <div class="badges">${p.tags.map(t=>`<i>${t}</i>`).join("")}</div>
+     <a class="go" href="${p.dia}">查看${p.dtype==="dataflow"?"数据流":"架构"}图</a>
+   </div></div></div>`;
+  list.appendChild(art);
+  art.querySelector(".prow").addEventListener("click",()=>{
+    const open=art.classList.contains("open");
+    $$(".proj.open").forEach(o=>{o.classList.remove("open");o.querySelector(".prow").setAttribute("aria-expanded","false")});
+    if(!open){art.classList.add("open");art.querySelector(".prow").setAttribute("aria-expanded","true")}
+  });
+  const row=art.querySelector(".prow");
+  row.addEventListener("pointerenter",()=>drawSpark(row.querySelector(".spark"),p.id),{once:true});
+});
+/* j/k navigation */
+let ki=-1;
+addEventListener("keydown",e=>{
+  if(e.target.matches("input,textarea")||$("#pal").classList.contains("open"))return;
+  if(e.key==="j"||e.key==="k"){
+    const rows=$$(".prow");ki=Math.max(0,Math.min(rows.length-1,ki+(e.key==="j"?1:-1)));
+    rows[ki].focus();e.preventDefault();
   }
-  tick();
+});
+function drawSpark(cv,seed){
+  const ctx=cv.getContext("2d");let s=0;for(const c of seed)s=(s*31+c.charCodeAt(0))>>>0;
+  const rnd=()=>{s=(s*1664525+1013904223)>>>0;return s/4294967296};
+  const W=cv.width,H=cv.height,n=24,pts=Array.from({length:n},(_,i)=>H*.28+rnd()*H*.5*(0.4+0.6*i/n));
+  ctx.clearRect(0,0,W,H);ctx.beginPath();
+  pts.forEach((y,i)=>i?ctx.lineTo(i*(W/n),y):ctx.moveTo(0,y));
+  ctx.strokeStyle="rgba(69,214,232,.85)";ctx.lineWidth=2;ctx.stroke();
+  ctx.lineTo(W,H);ctx.lineTo(0,H);ctx.closePath();
+  ctx.fillStyle="rgba(69,214,232,.12)";ctx.fill();
+}
+
+/* ================= marquee chips ================= */
+const mq=$("#mq");
+const chipHTML=p=>`<a class="chip" href="${p.dia}"><span class="t">${p.dtype}</span><b>${p.name}</b><span>${p.line}</span></a>`;
+mq.innerHTML=PROJ.map(chipHTML).join("")+PROJ.map(chipHTML).join("");
+
+/* ================= reveals & counters ================= */
+const io=new IntersectionObserver(es=>es.forEach(en=>{
+  if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target);
+    if(en.target.classList.contains("cell"))en.target.querySelectorAll(".cnt").forEach(countUp);}
+}),{threshold:.18});
+$$(".rev").forEach(el=>io.observe(el));
+function countUp(el){
+  const n=+el.dataset.n;if(RM){el.textContent=n.toLocaleString();return}
+  const t0=performance.now(),dur=1400;
+  (function f(t){const p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,4);
+    el.textContent=Math.round(n*e).toLocaleString();if(p<1)requestAnimationFrame(f)})(t0);
+}
+
+/* ================= tmux bar / scrollspy / progress ================= */
+setInterval(()=>{const d=new Date();$("#clock").textContent=d.toTimeString().slice(0,8)},1000);
+$("#clock").textContent=new Date().toTimeString().slice(0,8);
+$$(".win").forEach(b=>b.addEventListener("click",()=>document.querySelector(b.dataset.go).scrollIntoView({behavior:RM?"auto":"smooth"})));
+const spy=new IntersectionObserver(es=>es.forEach(en=>{
+  if(en.isIntersecting)$$(".win").forEach(w=>w.classList.toggle("on",w.dataset.go==="#"+en.target.id));
+}),{rootMargin:"-40% 0px -55% 0px"});
+$$("main > header, main section").forEach(s=>spy.observe(s));
+addEventListener("scroll",()=>{
+  const h=document.documentElement;
+  $("#progress").style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+"%";
+},{passive:true});
+
+/* ================= terminal ================= */
+const out=$("#term-out"),input=$("#term-input"),term=$("#term");
+function line(txt,cls){const d=document.createElement("div");d.className="ln "+(cls||"");d.innerHTML=txt;out.appendChild(d);out.scrollTop=out.scrollHeight;return d}
+const LINK={symnex:"#proj-symnex",tripplanner:"#proj-tripplanner",loomory:"#proj-loomory",gongji:"#proj-gongji",scenario:"#proj-scenario",wechat:"#proj-wechat"};
+const CMDS={
+ help:()=>line(`可用命令：
+  <span class="ln cmd">ls</span>            列出项目
+  <span class="ln cmd">open &lt;id&gt;</span>     打开项目卡片（如 open symnex）
+  <span class="ln cmd">dia &lt;id&gt;</span>      直接跳到架构图
+  <span class="ln cmd">whoami</span>        我是谁
+  <span class="ln cmd">neofetch</span>      系统信息
+  <span class="ln cmd">contact</span>       联系方式
+  <span class="ln cmd">clear</span>         清屏 · <span class="ln cmd">exit</span> 收起终端
+  彩蛋自己找。提示：权限是个好东西。`),
+ ls:()=>line(PROJ.map(p=>`<a href="#proj-${p.id}">${p.id.padEnd(12)}</a>  ${p.name}`).join("\n")),
+ whoami:()=>line(`chen cangxuan（陈苍玄）— 软件工程师 · 长期主义者
+关注：AI 应用工程 / 浏览器自动化 / DNS 基础设施 / 自托管工具链
+信条：把重复的数字劳动变成一条命令。`),
+ neofetch:()=>line(`<span style="color:var(--cy)">       ____</span>   ccx@pages
+<span style="color:var(--cy)">     / .   \\\\</span>  ---------------
+<span style="color:var(--cy)">    /  |    |</span>  OS:      GitHub Pages (single file, 0 deps)
+<span style="color:var(--cy)">   /   |____|</span>  Shell:   zsh 5.9 (emulated)
+<span style="color:var(--cy)">  /__________\\\\</span> Projects: 6 · diagrams: 6 · tests: 4,956
+<span style="color:var(--gn)">  c c x . d e v</span>  Commits: 6,609+ · LOC: 421,811`),
+ contact:()=>line(`mail    <a href="mailto:domains@chencangxuan.com">domains@chencangxuan.com</a>
+github  <a href="https://github.com/a1286743184">github.com/a1286743184</a>
+domain  <a href="https://chencangxuan.is-a.dev">chencangxuan.is-a.dev</a>`),
+ clear:()=>{out.innerHTML="";return null},
+ exit:()=>{term.classList.add("collapsed");const r=term.querySelector(".restore");r.hidden=false;r.textContent="$ session closed — click to reopen";r.onclick=()=>{term.classList.remove("collapsed");r.hidden=true;input.focus()};return null},
+ sudo:()=>line(`<span class="err">ccx is not in the sudoers file. This incident has been reported.</span> (to me. I ignored it.)`,"err"),
+ "rm -rf /":()=>line(`<span class="err">nice try.</span> 本站为只读文件系统。数据已加入备份清单——我的，不是你的。`,"err"),
+ make:()=>line(`make: *** 没有规则可制作目标。试试 <span class="ln cmd">make sense</span>？`),
+ "make sense":()=>line(`sense 已构建：0 warnings, 0 errors。这是本页唯一能保证的事。`),
+ vim:()=>line(`你已进入 vim。出口在 <span class="ln cmd">:q!</span> —— 但这里是假 vim，直接输入什么都行。`),
+};
+function runCmd(raw){
+  const s=raw.trim();if(!s)return;
+  line(`<span class="ps">$ </span>${s.replace(/</g,"&lt;")}`,"cmd");
+  const [c,...args]=s.split(/\s+/);
+  if(c==="open"||c==="dia"){
+    const t=(args[0]||"").toLowerCase();
+    if(LINK[t]){line("→ "+t,"ok");document.querySelector(LINK[t]).scrollIntoView({behavior:RM?"auto":"smooth"});
+      if(c==="dia")location.href=PROJ.find(p=>p.id===t).dia;
+      if(c==="open"){const a=$("#proj-"+t);a.classList.add("open");a.querySelector(".prow").setAttribute("aria-expanded","true")}}
+    else line(`open: 未知项目 '${t}'。试试 ls 看看。`,"err");
+    return;
+  }
+  const fn=CMDS[s]||CMDS[c];
+  if(fn)fn(args);
+  else line(`zsh: command not found: ${c.replace(/</g,"&lt;")} — 输入 <span class="ln cmd">help</span>`,"err");
+}
+$("#term-form").addEventListener("submit",e=>{e.preventDefault();runCmd(input.value);input.value=""});
+const hist=[];let hi=-1;
+input.addEventListener("keydown",e=>{
+  if(e.key==="ArrowUp"){if(hist.length){hi=Math.min(hist.length-1,hi+1);input.value=hist[hi]}e.preventDefault()}
+  if(e.key==="ArrowDown"){hi=Math.max(-1,hi-1);input.value=hi<0?"":hist[hi];e.preventDefault()}
+  if(e.key==="Enter"){hist.unshift(input.value);hi=-1}
+});
+
+/* boot sequence */
+const BOOT=[
+ ["ccx pages v3.0 — single file build",0],
+ ["mount /projects ... <span class='ln ok'>6 ok</span>",90],
+ ["mount /diagrams ... <span class='ln ok'>6 ok</span>",120],
+ ["verify figures ... <span class='ln ok'>green</span>",150],
+ ["shell ... <span class='ln ok'>ready</span>",110],
+ ["<span class='ln dim'>输入 help 查看命令 · / 全站搜索 · 星图节点可点击</span>",0],
+];
+if(RM){BOOT.forEach(b=>line(b[0]))}
+else BOOT.reduce((p,[txt,d])=>p.then(()=>new Promise(r=>setTimeout(r,d))).then(()=>line(txt)),Promise.resolve());
+
+/* ================= command palette ================= */
+const pal=$("#pal"),pin=$("#pal-input"),plist=$("#pal-list");
+const PAL=[...PROJ.map(p=>({t:p.name+" "+p.id,k:"项目 · open "+p.id,go:()=>{location.hash="";document.querySelector("#proj-"+p.id).scrollIntoView();$("#proj-"+p.id).classList.add("open")}})),
+ {t:"Interactive Diagrams",k:"区块 · #flow",go:()=>$("#flow").scrollIntoView()},
+ {t:"By The Numbers",k:"区块 · #stats",go:()=>$("#stats").scrollIntoView()},
+ {t:"Contact / say hi",k:"区块 · #contact",go:()=>$("#contact").scrollIntoView()},
+ {t:"GitHub 主页",k:"外部 · github",go:()=>open("https://github.com/a1286743184","_blank")},
+ {t:"发邮件",k:"外部 · mailto",go:()=>location.href="mailto:domains@chencangxuan.com"}];
+let psi=0,filtered=PAL;
+function renderPal(){
+  plist.innerHTML=filtered.map((it,i)=>`<li class="${i===psi?"sel":""}" data-i="${i}"><span>${it.t}</span><span class="k">${it.k}</span></li>`).join("")||`<li><span class="k" style="color:var(--faint)">无匹配</span></li>`;
+  const sel=plist.querySelector(".sel");if(sel)sel.scrollIntoView({block:"nearest"});
+}
+function openPal(){pal.classList.add("open");pin.value="";filtered=PAL;psi=0;renderPal();pin.focus()}
+function closePal(){pal.classList.remove("open")}
+pin.addEventListener("input",()=>{
+  const q=pin.value.toLowerCase();
+  filtered=PAL.filter(it=>(it.t+it.k).toLowerCase().includes(q)||q.split("").every(ch=>it.t.toLowerCase().includes(ch)));
+  psi=0;renderPal();
+});
+pin.addEventListener("keydown",e=>{
+  if(e.key==="ArrowDown"){psi=Math.min(filtered.length-1,psi+1);renderPal();e.preventDefault()}
+  if(e.key==="ArrowUp"){psi=Math.max(0,psi-1);renderPal();e.preventDefault()}
+  if(e.key==="Enter"&&filtered[psi]){closePal();filtered[psi].go()}
+  if(e.key==="Escape")closePal();
+});
+plist.addEventListener("click",e=>{const li=e.target.closest("li[data-i]");if(li){closePal();filtered[+li.dataset.i].go()}});
+pal.addEventListener("click",e=>{if(e.target===pal)closePal()});
+addEventListener("keydown",e=>{
+  if((e.key==="/"&&!e.target.matches("input,textarea"))||(e.key.toLowerCase()==="k"&&(e.ctrlKey||e.metaKey))){
+    e.preventDefault();pal.classList.contains("open")?closePal():openPal();
+  }
+});
+
+/* ================= constellation canvas (hero-local) ================= */
+(function(){
+  const cv=$("#bgcanvas"),ctx=cv.getContext("2d"),hero=$("#hero");
+  let W,H,DPR,nodes=[],dots=[],mx=-1e4,my=-1e4,raf=null;
+  const EDGES=[[0,1],[1,2],[0,3],[3,4],[2,5],[4,5],[0,5]];
+  function resize(){
+    DPR=Math.min(2,devicePixelRatio||1);W=hero.clientWidth;H=hero.clientHeight;
+    if(getComputedStyle(cv).display==="none"){nodes=[];dots=[];return}
+    cv.width=W*DPR;cv.height=H*DPR;
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+    layout();
+    if(!raf&&!RM)raf=requestAnimationFrame(frame);
+  }
+  function layout(){
+    nodes=PROJ.map((p,i)=>{
+      const gx=[.655,.895,.80,.115,.40,.075][i],gy=[.16,.44,.72,.10,.065,.38][i];
+      return {x:gx*W,y:gy*H,r:5.5,id:p.id,label:p.name,vx:0,vy:0};
+    });
+    dots=Array.from({length:Math.min(64,Math.round(W*H/20000))},()=>({
+      x:Math.random()*W,y:Math.random()*H,
+      vx:(Math.random()-.5)*.16,vy:(Math.random()-.5)*.16,
+      a:Math.random()*Math.PI*2,sp:.0006+Math.random()*.0012
+    }));
+  }
+  addEventListener("resize",resize);resize();
+  hero.addEventListener("pointermove",e=>{const r=hero.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top},{passive:true});
+  let hover=-1;
+  function hit(){
+    hover=-1;
+    for(let i=0;i<nodes.length;i++){const n=nodes[i];
+      if(Math.hypot(n.x-mx,n.y-my)<26){hover=i;break}}
+  }
+  hero.addEventListener("click",e=>{
+    if(e.target.closest("a,button,input,#term"))return;
+    hit();
+    if(hover>=0){document.querySelector("#proj-"+nodes[hover].id).scrollIntoView({behavior:RM?"auto":"smooth"});
+      $("#proj-"+nodes[hover].id).classList.add("open")}
+  });
+  function frame(t){
+    if(!nodes.length){raf=null;return}
+    ctx.clearRect(0,0,W,H);
+    for(const d of dots){
+      d.a+=d.sp;d.x+=d.vx+Math.cos(d.a)*.08;d.y+=d.vy+Math.sin(d.a)*.08;
+      const dx=d.x-mx,dy=d.y-my,ds=Math.hypot(dx,dy);
+      if(ds<130&&ds>0.1){d.x+=dx/ds*(130-ds)*.045;d.y+=dy/ds*(130-ds)*.045}
+      if(d.x<-20)d.x=W+20;if(d.x>W+20)d.x=-20;if(d.y<-20)d.y=H+20;if(d.y>H+20)d.y=-20;
+      ctx.fillStyle="rgba(122,137,164,.45)";ctx.fillRect(d.x,d.y,1.4,1.4);
+    }
+    ctx.lineWidth=1;
+    for(const [a,b] of EDGES){
+      const na=nodes[a],nb=nodes[b];
+      const g=ctx.createLinearGradient(na.x,na.y,nb.x,nb.y);
+      g.addColorStop(0,"rgba(69,214,232,.14)");g.addColorStop(1,"rgba(70,232,149,.09)");
+      ctx.strokeStyle=g;ctx.beginPath();ctx.moveTo(na.x,na.y);ctx.lineTo(nb.x,nb.y);ctx.stroke();
+    }
+    nodes.forEach((n,i)=>{
+      const hov=i===hover;
+      const pulse=RM?0:Math.sin(t*.0016+i*1.7)*1.2;
+      ctx.beginPath();ctx.arc(n.x,n.y,n.r+pulse+(hov?3:0),0,7);
+      ctx.fillStyle=hov?"#45d6e8":"rgba(69,214,232,.85)";ctx.fill();
+      ctx.beginPath();ctx.arc(n.x,n.y,n.r+10+pulse,0,7);
+      ctx.strokeStyle=hov?"rgba(69,214,232,.5)":"rgba(69,214,232,.14)";ctx.stroke();
+      ctx.font=(hov?"600 12.5px ":"11.5px ")+(getComputedStyle(document.body).getPropertyValue("--mono")||"monospace");
+      ctx.shadowColor="rgba(5,7,13,.9)";ctx.shadowBlur=4;
+      ctx.fillStyle=hov?"#eef4fc":"rgba(158,178,208,.95)";
+      ctx.textAlign="center";
+      ctx.fillText(n.label,n.x,n.y-n.r-12);
+      ctx.shadowBlur=0;
+    });
+    hit();
+    hero.style.cursor=hover>=0?"pointer":"";
+    if(!RM)raf=requestAnimationFrame(frame);
+  }
+  if(RM){frame(performance.now())}else raf=requestAnimationFrame(frame);
+  document.addEventListener("visibilitychange",()=>{
+    if(document.hidden&&raf)cancelAnimationFrame(raf);
+    else if(!document.hidden&&!RM&&!raf)raf=requestAnimationFrame(frame);
+  });
 })();
 </script>
 </body>

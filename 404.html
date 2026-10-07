@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#05070d">
+<title>404 · command not found</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2305070d'/%3E%3Ctext x='10' y='44' font-family='monospace' font-size='30' fill='%2345d6e8'%3E%26gt;_%3C/text%3E%3C/svg%3E">
+<style>
+@font-face{font-family:"JetBrains Mono";src:url(fonts/jbmono-regular.woff2) format("woff2");font-weight:400;font-display:swap}
+:root{--bg:#05070d;--txt:#d5e1f2;--dim:#66748f;--cy:#45d6e8;--gn:#46e895;--mono:"JetBrains Mono",ui-monospace,Consolas,monospace}
+*{margin:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--txt);font-family:var(--mono);min-height:100svh;display:flex;align-items:center;justify-content:center;padding:24px}
+.box{max-width:640px;width:100%}
+h1{font-size:clamp(64px,16vw,150px);line-height:1;letter-spacing:-.04em;color:#f2f7ff}
+h1 span{color:var(--cy)}
+p{color:var(--dim);font-size:14px;line-height:1.9;margin:18px 0 30px}
+p b{color:var(--gn);font-weight:400}
+a.go{display:inline-block;color:var(--cy);border:1px solid rgba(69,214,232,.4);border-radius:8px;padding:10px 22px;font-size:14px;text-decoration:none;transition:background .2s}
+a.go:hover{background:rgba(69,214,232,.12)}
+</style>
+</head>
+<body>
+<div class="box">
+  <h1>4<span>0</span>4</h1>
+  <p>$ cat /this/page &amp;&amp; cd ~<br>
+  zsh: no such file or directory: /this/page<br>
+  <b>exit code 1</b> — 页面不存在，但终端永远欢迎你回家。</p>
+  <a class="go" href="/">cd ~ · 返回主页</a>
+</div>
+</body>
+</html>
